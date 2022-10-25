@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configure type="Common_MaintainTool">
+    <Account>
+        <!--Database-->
+        <Database type="MSSQL" addr="MSSQL DB SERVER" port="1433" catalog="DBNAME" username="SQLUSER" password="PASSWORD"></Database>
+        
+    </Account>
+</Configure>

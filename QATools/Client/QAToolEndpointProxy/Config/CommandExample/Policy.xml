@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Policy>
+	<Deny>
+		<tag name="itar" vlaue="yes"/> <!-- or -->
+		<tag name="level" value="2"/>	
+	</Deny>
+	<Users>
+		<user name="kim1" level="1" itar="no">
+		<user name="kim1" level="1" itar="no">
+		<user name="kim1" level="1" itar="no">
+		<user name="kim1" level="1" itar="no">
+	</Users>
+</Policy>

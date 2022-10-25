@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configure type="Common_SIPComponent">
+    <Account>
+        <!--Database-->
+        <Database type="MSSQL" addr="MSSQL DB SERVER" port="1433" catalog="DBNAME" username="SQLUSER" password="PASSWORD"></Database>
+    </Account>
+
+    <!--TCP Communication-->
+    <TCPConmunication>
+        <NLLyncEndpointProxy>
+            <LyncClient type ="agent" addr="IM AGENT SERVER" port="8001"/>
+            <LyncClient type ="assistant" addr="IM AGENT SERVER" port="8002"/>
+        </NLLyncEndpointProxy>
+    </TCPConmunication>
+
+    <!--Prompt Message-->
+    <PromptMessage>
+        <SIPComponent>
+            <RuntimeInfo>
+                <RecordPerformanceLog>false</RecordPerformanceLog>
+                <ThreadPoolMinThreadCount>100</ThreadPoolMinThreadCount>
+            </RuntimeInfo>
+            <ErrorMessage>
+                <DenyInvite  code="600"></DenyInvite>
+                <MeetingInviteMsgDenyBeforeManualClassifyDone>Please classify the meeting before you can invite others to join.</MeetingInviteMsgDenyBeforeManualClassifyDone>
+                <MeetingJoinMsgDenyBeforeManualClassifyDone>You are not authorized to join the meeting. Please contact meeting owner for help.</MeetingJoinMsgDenyBeforeManualClassifyDone>
+                <MeetingShareCreateMsgDenyBeforeManualClassifyDone>Please classify the meeting before you sharing.</MeetingShareCreateMsgDenyBeforeManualClassifyDone>
+                <MeetingShareJoinMsgDenyBeforeManualClassifyDone>You are not authorized to view the meeting sharing information. Please contact meeting owner for help.</MeetingShareJoinMsgDenyBeforeManualClassifyDone>
+        </ErrorMessage>
+        </SIPComponent>
+    </PromptMessage>
+</Configure>

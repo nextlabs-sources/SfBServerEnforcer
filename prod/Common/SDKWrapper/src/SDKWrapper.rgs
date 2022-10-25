@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'SDKWrapper'
+		'SDKWrapper.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

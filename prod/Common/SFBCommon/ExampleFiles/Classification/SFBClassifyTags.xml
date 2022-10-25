@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Classification type = "tags">
+    <Tag name="itar" values="yes"/>
+    <Tag name="level" values="5"/>
+    <Tag name="classify" values="yes"/>
+    <Tag name="description" values="protected meeting"/>
+</Classification>

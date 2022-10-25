@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{7034218f-8a4c-4012-9529-83835294ea31}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="PlatForm">
+      <UniqueIdentifier>{94011a25-9941-4a37-8887-bb21936508cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ResAttributes">
+      <UniqueIdentifier>{c83c9542-7c5a-4476-9699-cb61cdeb767b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ResAttributes">
+      <UniqueIdentifier>{d66ed5a0-85b3-4a0a-9e1e-8ab012749cd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlatForm\ResAttributes">
+      <UniqueIdentifier>{48a6fe82-7f67-4373-9719-f2d56bd94406}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\CEAttres.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common_tools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nlofficerep_only_debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QueryPC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SDKWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TranslateJsonHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jsoncpp\src\json_reader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jsoncpp\src\json_value.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jsoncpp\src\json_writer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="idlgen\SDKWrapper_i.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResAttribute\src\NLTagManager.cpp">
+      <Filter>Source Files\ResAttributes</Filter>
+    </ClCompile>
+    <ClCompile Include="ResAttribute\src\NLTag.cpp">
+      <Filter>Source Files\ResAttributes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\CEAttres.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\common_tools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QueryPC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\cesdk.h">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\cesdk.hpp">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\cesdk_abstraction.hpp">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\cesdk_attributes.hpp">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\cesdk_connection.hpp">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\cesdk_keymgmt_loader.hpp">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\cesdk_loader.hpp">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\cesdk_obligations.hpp">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\cesdk_query.hpp">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\cesdk_string.hpp">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\cetype.h">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\ignore_application.hpp">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\policy_controller.hpp">
+      <Filter>PlatForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TranslateJsonHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jsoncpp\include\autolink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jsoncpp\include\config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jsoncpp\include\features.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jsoncpp\include\forwards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jsoncpp\include\json.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jsoncpp\include\reader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jsoncpp\include\value.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jsoncpp\include\writer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jsoncpp\src\json_batchallocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jsoncpp\src\json_tool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="idlgen\SDKWrapper_i.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResAttribute\platform\resattrlib.h">
+      <Filter>PlatForm\ResAttributes</Filter>
+    </ClInclude>
+    <ClInclude Include="ResAttribute\platform\resattrmgr.h">
+      <Filter>PlatForm\ResAttributes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nlofficerep_only_debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResAttribute\include\NLTagManager.h">
+      <Filter>Header Files\ResAttributes</Filter>
+    </ClInclude>
+    <ClInclude Include="ResAttribute\include\NLTag.h">
+      <Filter>Header Files\ResAttributes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\dllmain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\CEAttres.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\Obligation.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QueryPC.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\Request.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\SDKWrapper.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="jsoncpp\src\json_internalarray.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="jsoncpp\src\json_internalmap.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\NLTag.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\NLTagManager.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\SDKWrapper.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="src\SDKWrapper.idl">
+      <Filter>Source Files</Filter>
+    </Midl>
+  </ItemGroup>
+</Project>

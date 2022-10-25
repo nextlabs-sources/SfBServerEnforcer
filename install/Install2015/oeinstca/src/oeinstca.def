@@ -1,0 +1,9 @@
+; oeinstca.def
+
+
+LIBRARY    "oeinstca"
+
+EXPORTS
+
+FindConfigFile
+CopyConfigFile

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MessageInfo>
+    <Message type="endpointInfo">
+        <EndpointProxySipUri>EndpointProxy.NLLync@lync.nextlabs.solutions</EndpointProxySipUri>
+    </Message>
+</MessageInfo>

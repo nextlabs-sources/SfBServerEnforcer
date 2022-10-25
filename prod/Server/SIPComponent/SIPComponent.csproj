@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F3433367-2C9C-4A67-8A36-DB660D7CECC6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nextlabs.SFBServerEnforcer.SIPComponent</RootNamespace>
+    <AssemblyName>SIPComponent</AssemblyName>
+    <TargetFrameworkVersion>$(SFBDNETVERSION)</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>debug_win_x64\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>release_win_x64\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SFBServerEnforceSIPKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Nextlabs.SFBServerEnforcer.SIPComponent.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Image\ELM-ce-32.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ServerAgent">
+      <HintPath>$(NLEXTERNALGITDIR)\SFB SDK\$(SFBVERSION)\Microsoft Lync Server\SDK\Bin\ServerAgent.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFBCommon">
+      <HintPath>$(NLBUILDROOT)\bin\$(Configuration)_win_$(Platform)\SFBCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="PolicyHelper">
+      <HintPath>$(NLBUILDROOT)\bin\$(Configuration)_win_$(Platform)\PolicyHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="SFBBaseCommon">
+      <HintPath>$(NLBUILDROOT)\bin\$(Configuration)_win_$(Platform)\SFBBaseCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataManagement\DicCacheTemplate.cs" />
+    <Compile Include="DataManagement\CChatRoom.cs" />
+    <Compile Include="DataManagement\CConference.cs" />
+    <Compile Include="DataManagement\CDataCacheMantain.cs" />
+    <Compile Include="CIMCall.cs" />
+    <Compile Include="DataManagement\CEntityVariableInfoManager.cs" />
+    <Compile Include="NLAnalysis\NLChatRoomAttachmentAnalyser.cs" />
+    <Compile Include="Policy\CondtionObligationEvaluation.cs" />
+    <Compile Include="ContactToEndpointProxy.cs" />
+    <Compile Include="Policy\CPolicy.cs" />
+    <Compile Include="CSessionManager.cs" />
+    <Compile Include="CSIPParser.cs" />
+    <Compile Include="Common\CSIPTools.cs" />
+    <Compile Include="NLAnalysis\CEntityClassifyManager.cs" />
+    <Compile Include="NLAnalysis\NLConferenceShareAnalyser.cs" />
+    <Compile Include="Policy\ObligationHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SIPComponentService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SIPComponentService.Designer.cs">
+      <DependentUpon>SIPComponentService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SIPComponentConfig.cs" />
+    <Compile Include="SIPComponentMain.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SIPContentHelper\SIPContent.cs" />
+    <Compile Include="SIPContentHelper\SIPContentApplicationCcpXml.cs" />
+    <Compile Include="SIPContentHelper\SIPContentApplicationSdp.cs" />
+    <Compile Include="SIPContentHelper\SIPContentTextPlain.cs" />
+    <Compile Include="SIPContentHelper\XCCosContenObjs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Config\SfbServerEnforcer.am">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SFBServerEnforceSIPKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\nlsipproxy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\nlsipproxy_log.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\DLP-ce-32.ico" />
+    <Content Include="Image\ELM-ce-32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SIPComponentService.resx">
+      <DependentUpon>SIPComponentService.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir  ..\..\..\..\bin\$(Configuration)_win_$(Platform)
+mkdir  ..\..\..\..\bin\$(Configuration)_win_$(Platform)\Config
+copy ..\$(Configuration)_win_$(Platform)\Config\SfbServerEnforcer.am ..\..\..\..\bin\$(Configuration)_win_$(Platform)\Config
+copy ..\$(Configuration)_win_$(Platform)\Config\nlsipproxy.xml ..\..\..\..\bin\$(Configuration)_win_$(Platform)\Config
+copy ..\$(Configuration)_win_$(Platform)\Config\nlsipproxy_log.xml ..\..\..\..\bin\$(Configuration)_win_$(Platform)\Config
+copy ..\$(Configuration)_win_$(Platform)\SIPComponent.exe ..\..\..\..\bin\$(Configuration)_win_$(Platform)
+copy ..\$(Configuration)_win_$(Platform)\SIPComponent.exe.config ..\..\..\..\bin\$(Configuration)_win_$(Platform)
+copy ..\$(Configuration)_win_$(Platform)\SIPComponent.pdb ..\..\..\..\bin\$(Configuration)_win_$(Platform)
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

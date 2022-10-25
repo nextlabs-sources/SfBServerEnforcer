@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Classification</title>
+    <link rel="stylesheet" href="../Resources/common.css">
+    <link rel="stylesheet" href="../Resources/classification.css">
+</head>
+<body>
+    <!-- <button onclick="NLDebug()" class="hidden">StartDebug</button> -->
+    <div class="tag-dashboard">
+        <div class="tag-dashboard-head"></div>
+        <div class="tag-dashboard-body">
+            <!--tag list-->
+            <div class="tag-side-col">
+                <div class="tag-list">
+                    <div class="tag-list-head">
+                        <p>Classification Element(s)</p>
+                    </div>
+                    <div class="tag-list-body">
+                        <!--<div class="tag-list-item">
+                            <span class="tag-name">Itar</span>
+                            <div class="tag-delete"><span class="red-cross"></span></div>
+                        </div>-->
+                    </div>
+                    <div class="separator-primary"></div>
+                    <div class="tag-list-foot">
+                        <button id="tag-add-new-btn" class="btn btn-primary md">New Classification Element</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--tag panel-->
+            <div class="tag-panel-col">
+                <div class="tag-panel">
+                    <div class="tag-panel-head">
+                        <p>Classification Element Detail</p>
+                        <span class="dustbin"></span>
+                    </div>
+                    <div class="tag-panel-body">
+                        <div class="tag-panel-body-row">
+                            <span class="tag-label-for">Name</span>
+                            <input id="tag-name-box" class="tag-detail-box" type="text">
+                        </div>
+                        <div class="tag-panel-body-row">
+                            <span class="tag-label-for">Value(s)</span>
+                            <input id="tag-values-box" class="tag-detail-box" type="text" placeholder="Please seperate the value with char '|'">
+                        </div>
+                        <div class="tag-panel-body-row">
+                            <span class="tag-label-for">Default Value</span>
+                            <select id="tag-default-select" class="tag-detail-box"></select>
+                        </div>
+                        <div class="tag-panel-body-row">
+                            <span class="tag-label-for">Editable</span>
+                            <select id="tag-editable-select" class="tag-detail-box">
+                                <option class="tag-detail-value">true</option>
+                                <option class="tag-detail-value" selected="selected">false</option>
+                            </select>
+                        </div>
+						<div class="tag-panel-body-row">
+							<p id="input-check-msg" class="input-check-msg hide">The classification name max length is 255.</p>	
+						</div>
+                    </div>
+                    <!--div class="separator-primary"></div-->
+                    <div class="tag-panel-foot">
+                        <button id="tag-ok-btn" class="btn btn-primary sm hidden">OK</button>
+                        <button id="tag-cancel-btn" class="btn btn-default sm hidden">Cancel</button>
+                        <button id="tag-apply-btn" class="btn btn-primary sm">Apply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tag-dashboard-foot">
+            <button id="tag-save-btn" class="btn btn-primary md tag-save-btn">Save</button>
+        </div>
+    </div>
+    <div class="mask">
+        <!--Loading Animation-->
+        <div class="animation-container">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script src="../JScript/NLClassification.js"></script>
+</body>
+</html>

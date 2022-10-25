@@ -1,0 +1,188 @@
+# Common make file for building installers
+#
+# IsCmdBld.exe commandline options:
+#	-a <product configuration>
+#	-b Output directory
+#	-n								No compile
+#	-p <ISM file>
+#	-q3                             Only compile setup.rul
+#	-r <release name>
+#	-x								Stop on error
+#	-y <product version>
+
+
+#
+# Prepare environment
+#
+
+CURRENT_MKFILE_PATH    := $(abspath $(lastword $(MAKEFILE_LIST)))
+CURRENT_MKFILE_DIRPATH := $(dir $(CURRENT_MKFILE_PATH))
+
+ifeq ($(ProgramW6432), )
+	ENV_OS=x86
+	PROGRAM_FILES_X86=C:/Program Files
+else
+	ENV_OS=x64
+	PROGRAM_FILES_X86=C:/Program Files (x86)
+endif
+
+PROGRAM_FILES_X86_DOS=$(subst /,\,$(PROGRAM_FILES_X86))
+
+PERL=/usr/bin/perl
+# installer64
+ISCMDBLD=$(PROGRAM_FILES_X86)/InstallShield/2014 SAB/System/IsCmdBld.exe
+SIGNTOOL_OFFICIAL_TOOL=$(PROGRAM_FILES_X86)/Windows Kits/8.0/bin/x64/signtool.exe
+SIGNTOOL_OFFICIAL_ARGS=sign /ac c:/release/bin/DigiCertAssuredIDRootCA.cer /f c:/release/bin/NextLabs.pfx /p IiVf1itvOrqJ /n "NextLabs Inc." /fd sha256 /tr http://timestamp.digicert.com
+SIGNTOOL_OFFICIAL='$(SIGNTOOL_OFFICIAL_TOOL)' $(SIGNTOOL_OFFICIAL_ARGS)
+
+OFFICIALCERT=0
+VERSION_BUILD_SHORT=$(firstword $(subst -, ,$(VERSION_BUILD)))
+
+INSTALL_DIR=$(NLBUILDROOT)/install/
+INSTALL_BUILD_DIR=$(INSTALL_DIR)/build
+ASSEMBLY_DIR=$(INSTALL_BUILD_DIR)/data
+OUTPUT_DIR=$(INSTALL_BUILD_DIR)/output
+PACKAGE64_DIR=$(INSTALL_BUILD_DIR)/package64
+PACKAGE_FILE64=$(basename $(MSI_FILE64))-$(VERSION_STR)-$(VERSION_BUILD_SHORT)-$(shell date +"%Y%m%d%H%M").zip
+PUBLISH_DIR=$(NLBUILDROOT)/bin/installer
+BUILD_DIR=$(subst /,\,$(ASSEMBLY_DIR))
+DEPLOY_DIR=$(subst /,\,$(OUTPUT_DIR))
+
+TARGETS=installer64
+
+#
+# Print environment
+#
+
+$(info -----------------------------------------------------------------------------)
+$(info BUILDTYPE                   = $(BUILDTYPE))
+$(info VERSION_BUILD               = $(VERSION_BUILD))
+$(info VERSION_BUILD_SHORT         = $(VERSION_BUILD_SHORT))
+$(info BUILD_NUMBER                = $(BUILD_NUMBER))
+$(info Packaging list              = $(PACKAGE_LIST))
+$(info Install directory           = $(INSTALL_DIR))
+$(info Assembly directory          = $(ASSEMBLY_DIR))
+$(info Output directory            = $(OUTPUT_DIR))
+$(info Package directory (64-bit)  = $(PACKAGE64_DIR))
+$(info Package file (64-bit)       = $(PACKAGE_FILE64))
+$(info Publish directory           = $(PUBLISH_DIR))
+$(info Current OS                  = $(ENV_OS))
+$(info Program files (x86)         = $(PROGRAM_FILES_X86))
+$(info Program files (x86) DOS     = $(PROGRAM_FILES_X86_DOS))
+$(info ISM X64 template file name  = $(ISM_TEMPLATE_FILE_NAME_X64))
+$(info ISM release                 = $(ISM_RELEASE))
+$(info ISM product config (64-bit) = $(ISM_PRODUCT_CONFIG64))
+$(info ISM output directory        = $(DEPLOY_DIR))
+$(info ISM output directory        = $(DEPLOY_DIR))
+$(info CURRENT_MKFILE_PATH         = $(CURRENT_MKFILE_PATH))
+$(info CURRENT_MKFILE_DIRPATH      = $(CURRENT_MKFILE_DIRPATH))
+$(info -----------------------------------------------------------------------------)
+
+
+#
+# Targets
+#
+
+.PHONY: all
+all: assembly $(TARGETS) publish
+
+.PHONY: assembly
+assembly: clean
+	@echo "INFO: Prepare SfBSE assembly"
+	mkdir -p $(CURRENT_MKFILE_DIRPATH)/installer
+	mkdir -p $(CURRENT_MKFILE_DIRPATH)/installer/artifacts/ ; cd $(NLBUILDROOT)/bin/release_win_x64/Config ; cp -f \
+		sfbe.xml \
+		sfbe_log.xml \
+		product.xml \
+		SfbServerEnforcer.am \
+		$(CURRENT_MKFILE_DIRPATH)/installer/artifacts/
+	cd $(CURRENT_MKFILE_DIRPATH)/ ; tar cf - Install2015 resource | ( cd $(CURRENT_MKFILE_DIRPATH)/installer ; tar xf - )
+	mkdir -p $(CURRENT_MKFILE_DIRPATH)/installer/release_win_x64/ ; cd $(NLBUILDROOT)/bin/release_win_x64 ; cp -f \
+		ChatRobot.dll \
+		HTTPComponent.dll \
+		sfbeadmin.exe \
+		CoreManager.dll \
+		TagHelper.dll \
+		log4net.dll \
+		MySql.Data.dll \
+		NLLyncEndpointProxy.exe \
+		ClassificationTool.exe \
+		PolicyHelper.dll \
+		SDKWrapper.dll \
+		SFBBaseCommon.dll \
+		SFBCommon.dll \
+		SFBControlPanel.exe \
+		SIPComponent.exe \
+		UCMAHelper.dll \
+		Newtonsoft.Json.dll \
+		$(CURRENT_MKFILE_DIRPATH)/installer/release_win_x64/
+	cd $(NLBUILDROOT)/bin/release_win_x64 ; tar cf - WebResource | ( cd $(CURRENT_MKFILE_DIRPATH)/installer/release_win_x64 ; tar xf - )
+	cd $(NLBUILDROOT)/bin/release_win_x64 ; tar cf - ClientBin | ( cd $(CURRENT_MKFILE_DIRPATH)/installer/release_win_x64/WebResource/WSAssistant ; tar xf - )
+	cd $(NLBUILDROOT)/ ; cp bin/Release_win_x64/JScript/NLRoomForm.js $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp bin/Release_win_x64/JScript/NLClassification.js $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp bin/Release_win_x64/JScript/NLSchema.js $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp prod/Server/HTTPComponent/Resources/room_enforce.png $(CURRENT_MKFILE_DIRPATH)/installer/release_win_x64/
+	cd $(NLBUILDROOT)/ ; cp prod/Server/HTTPComponent/Resources/room_notEnforce.png $(CURRENT_MKFILE_DIRPATH)/installer/release_win_x64/
+	cd $(NLBUILDROOT)/ ; cp prod/Server/HTTPComponent/Resources/room_enforce.png $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp prod/Server/HTTPComponent/Resources/room_notEnforce.png $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp install/DeployNLExtention.ps1 $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp install/DeployNLWebService.ps1 $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp install/DeploySIPExtention.ps1 $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp install/UnDeployNLExtention.ps1 $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp install/UnDeployNLWebService.ps1 $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp install/UnDeploySIPExtention.ps1 $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp install/NextLabs.Assistant.png $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp install/NextLabs.Enforcer.png $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp install/readme.txt $(CURRENT_MKFILE_DIRPATH)/installer/artifacts/
+	cd $(NLBUILDROOT)/ ; cp prod/Common/PolicyHelper/Config/product.xml $(CURRENT_MKFILE_DIRPATH)/installer/artifacts/
+	cd $(NLBUILDROOT)/ ; cp prod/Common/PolicyHelper/Config/product.xml $(CURRENT_MKFILE_DIRPATH)/installer/artifacts/
+	cd $(NLBUILDROOT)/ ; cp bin/Release_win_x64/Resources/classification.css $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp bin/Release_win_x64/Resources/common.css $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp bin/Release_win_x64/Resources/schema.css $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp bin/Release_win_x64/Resources/treeview.css $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp bin/Release_win_x64/Pages/classification.html $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; cp bin/Release_win_x64/Pages/schema.html $(CURRENT_MKFILE_DIRPATH)/installer/resource/
+	cd $(NLBUILDROOT)/ ; '$(SIGNTOOL_OFFICIAL_TOOL)' $(SIGNTOOL_OFFICIAL_ARGS) $(CURRENT_MKFILE_DIRPATH)/installer/resource/DeployNLExtention.ps1
+	cd $(NLBUILDROOT)/ ; '$(SIGNTOOL_OFFICIAL_TOOL)' $(SIGNTOOL_OFFICIAL_ARGS) $(CURRENT_MKFILE_DIRPATH)/installer/resource/DeployNLWebService.ps1
+	cd $(NLBUILDROOT)/ ; '$(SIGNTOOL_OFFICIAL_TOOL)' $(SIGNTOOL_OFFICIAL_ARGS) $(CURRENT_MKFILE_DIRPATH)/installer/resource/DeploySIPExtention.ps1
+	cd $(NLBUILDROOT)/ ; '$(SIGNTOOL_OFFICIAL_TOOL)' $(SIGNTOOL_OFFICIAL_ARGS) $(CURRENT_MKFILE_DIRPATH)/installer/resource/UnDeployNLExtention.ps1
+	cd $(NLBUILDROOT)/ ; '$(SIGNTOOL_OFFICIAL_TOOL)' $(SIGNTOOL_OFFICIAL_ARGS) $(CURRENT_MKFILE_DIRPATH)/installer/resource/UnDeploySIPExtention.ps1
+	cd $(NLBUILDROOT)/ ; '$(SIGNTOOL_OFFICIAL_TOOL)' $(SIGNTOOL_OFFICIAL_ARGS) $(CURRENT_MKFILE_DIRPATH)/installer/resource/UnDeployNLWebService.ps1
+	cd $(NLBUILDROOT)/ ; cp install/$(ISM_TEMPLATE_FILE_NAME_X64) $(CURRENT_MKFILE_DIRPATH)/installer/$(ISM_TEMPLATE_FILE_NAME_X64)
+	cd $(NLBUILDROOT)/ ; C:/Windows/syswow64/cscript.exe //nologo build/ISAutoGUIDVersion.js $(CURRENT_MKFILE_DIRPATH)/installer/$(ISM_TEMPLATE_FILE_NAME_X64) $(VERSION_STR).$(BUILD_NUMBER)
+	chmod -R +w $(CURRENT_MKFILE_DIRPATH)/installer
+
+.PHONY: installer64
+installer64:
+	@echo "INFO: Generate 64-bit SfBServer Enforcer installer"
+	mkdir -p $(DEPLOY_DIR)
+	cd $(CURRENT_MKFILE_DIRPATH)/ ; '$(ISCMDBLD)' -x -r $(ISM_RELEASE) -p "installer/$(ISM_TEMPLATE_FILE_NAME_X64)" -b "$(DEPLOY_DIR)"
+	@if [ $(OFFICIALCERT) -ne 0 ]; then \
+		echo "INFO: Signing $(MSI_FILE64) msi file" ; \
+		echo "'$(SIGNTOOL_OFFICIAL_TOOL)' $(SIGNTOOL_OFFICIAL_ARGS) $(OUTPUT_DIR)/CompliantEnterprisex64/$(ISM_RELEASE)/DiskImages/DISK1/$(MSI_FILE64)" ; \
+		'$(SIGNTOOL_OFFICIAL_TOOL)' $(SIGNTOOL_OFFICIAL_ARGS) $(OUTPUT_DIR)/CompliantEnterprisex64/$(ISM_RELEASE)/DiskImages/DISK1/$(MSI_FILE64) ; \
+	fi
+
+.PHONY: clean
+clean:
+	rm -rf $(CURRENT_MKFILE_DIRPATH)/installer $(DEPLOY_DIR)
+
+.PHONY: publish
+publish:
+	@echo "INFO: Publish installer packages"
+	@if [ "$(MSI_FILE64)" != "" ]; then \
+		echo "INFO:   Copying 64-bit installer package" ; \
+		if [ ! -d $(PACKAGE64_DIR) ]; then \
+			mkdir -p $(PACKAGE64_DIR) ; \
+		fi ; \
+		cp -pf $(CURRENT_MKFILE_DIRPATH)/installer/artifacts/* $(PACKAGE64_DIR)/; \
+		cp -pf $(NLBUILDROOT)/install/Sfb_PolicyModel_Template.bin $(PACKAGE64_DIR)/; \
+		cp -pf $(OUTPUT_DIR)/CompliantEnterprisex64/$(ISM_RELEASE)/DiskImages/DISK1/$(MSI_FILE64) $(PACKAGE64_DIR)/ ; \
+		cd $(PACKAGE64_DIR); zip ../$(PACKAGE_FILE64) * ; \
+	fi
+	@if [ ! -d $(PUBLISH_DIR) ]; then \
+		mkdir -p $(PUBLISH_DIR)	; \
+	fi
+	cp -pf $(INSTALL_BUILD_DIR)/*.zip $(PUBLISH_DIR)
+	@echo "INFO:   Content of $(PUBLISH_DIR)"
+	@ls -al $(PUBLISH_DIR)

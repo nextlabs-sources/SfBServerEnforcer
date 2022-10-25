@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configure type="Common_SFBControlPanel">
+    <Account>
+        <!--Database-->
+        <Database type="MSSQL" addr="MSSQL DB SERVER" port="1433" catalog="DBNAME" username="SQLUSER" password="PASSWORD"></Database>
+    </Account>
+
+    <!--Prompt Message-->
+    <PromptMessage>
+        <SFBControlPanel>
+            <ErrorMessage>
+                <DBConectionError>Connection to database failed</DBConectionError>
+                <ReadPersistentValueError>Failed to read chat room category's default value. Please try again. If the problem persists, please contact your system administrator.</ReadPersistentValueError>
+                <PersistentSaveError>Failed to save your chat room category's configuration. Please try again. If the problem persists, please contact your system administrator.</PersistentSaveError>
+                <NoPermission>You have no RTC Universal Server Admins permission. Please contact your system administrator.</NoPermission>
+                <UnknownError>Unknown error. Please try again. If the problem persists, please contact your system administrator.</UnknownError>
+            </ErrorMessage>
+            <RuntimeInfo>
+                <FormTitle>NextLabs Entitlement Management for Skype for Business  Control Panel</FormTitle>
+                <StartLoading>Loading chat room categories information.</StartLoading>
+                <EndLoading>Chat room category information is loaded.</EndLoading>
+                <EnforcerExplain>When enabled, chat room created under this category will be safeguarded by NextLabs Enforcer.</EnforcerExplain>
+                <ForceEnforcerExplain>Chat room enforcement can not be modified by the room manager.</ForceEnforcerExplain>
+                <ClassficationAreaTitle>Set Classification Schema</ClassficationAreaTitle>
+                <SupportForceEnforcerOption>false</SupportForceEnforcerOption>
+                <SubmitSuccessed>Submit Successed</SubmitSuccessed>
+                <SubmitFailed>Submit Failed</SubmitFailed>
+                <ClassficationWarningInfo>Old classification schema name is \ORGCLASSIFICATIONSCHEMANAME;, but this is not exist or change in classification schema define table. You can ask for your system admin for help.</ClassficationWarningInfo>
+            </RuntimeInfo>
+        </SFBControlPanel>
+    </PromptMessage>
+</Configure>

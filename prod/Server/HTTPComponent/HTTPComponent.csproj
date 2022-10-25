@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1B0ECA9A-71DF-4E42-9479-DC6386ACB4F5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nextlabs.SFBServerEnforcer.HTTPComponent</RootNamespace>
+    <AssemblyName>HTTPComponent</AssemblyName>
+    <TargetFrameworkVersion>$(SFBDNETVERSION)</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SFBServerEnforcerHttpModuleKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>debug_win_x64\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>release_win_x64\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TagHelper">
+      <HintPath>$(NLBUILDROOT)\bin\$(Configuration)_win_$(Platform)\TagHelper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContactToEndpointProxy.cs" />
+    <Compile Include="Common\CConfig.cs" />
+    <Compile Include="Parser\CHttpParserBase.cs" />
+    <Compile Include="Parser\CHttpParserManageHandler.cs" />
+    <Compile Include="Parser\CHttpParserManagerChatRoomAttachment.cs" />
+    <Compile Include="Parser\CHttpParserPersistentChat.cs" />
+    <Compile Include="Common\CHttpTools.cs" />
+    <Compile Include="Data\HttpChatRoomInfo.cs" />
+    <Compile Include="HTTPModuleMain.cs" />
+    <Compile Include="Parser\CHttpParserRoomFormJS.cs" />
+    <Compile Include="Policy\CondtionObligationEvaluation.cs" />
+    <Compile Include="Policy\HttpPolicy.cs" />
+    <Compile Include="Policy\ObligationHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestFilters\RequestFilter.cs" />
+    <Compile Include="RequestFilters\RequestFilterChatRoomAttachment.cs" />
+    <Compile Include="RequestFilters\RequestFilterManageHandler.cs" />
+    <Compile Include="ResponseFilters\ResponseFilterManageHandler.cs" />
+    <Compile Include="ResponseFilters\ResponseFilter.cs" />
+    <Compile Include="ResponseFilters\ResponseFilterPersistentChat.cs" />
+    <Compile Include="ResponseFilters\ResponseFilterRoomFormJS.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="SFBServerEnforcerHttpModuleKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TScript\tsconfig.json" />
+    <None Include="TScript\sfbchatroom.ts" />
+    <None Include="TScript\sfbchatroomstyle.ts" />
+    <None Include="gulpfile.js" />
+    <None Include="TScript\mainform.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SFBCommon">
+      <HintPath>$(NLBUILDROOT)\bin\$(Configuration)_win_$(Platform)\SFBCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="PolicyHelper">
+      <HintPath>$(NLBUILDROOT)\bin\$(Configuration)_win_$(Platform)\PolicyHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="SFBBaseCommon">
+      <HintPath>$(NLBUILDROOT)\bin\$(Configuration)_win_$(Platform)\SFBBaseCommon.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\nlwebext.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\nlwebext_log.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\HTTPComponent_AssenblyLoad.xml" />
+    <Content Include="ReadMe.txt" />
+    <Content Include="Resources\room_enforce.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\room_notEnforce.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir  ..\..\..\..\bin\$(Configuration)_win_$(Platform)
+mkdir  ..\..\..\..\bin\$(Configuration)_win_$(Platform)\Config
+mkdir  ..\..\..\..\bin\$(Configuration)_win_$(Platform)\Resources
+copy ..\$(Configuration)_win_$(Platform)\Resources\room_enforce.png ..\..\..\..\bin\$(Configuration)_win_$(Platform)\Resources
+copy ..\$(Configuration)_win_$(Platform)\Resources\room_notEnforce.png ..\..\..\..\bin\$(Configuration)_win_$(Platform)\Resources
+copy ..\$(Configuration)_win_$(Platform)\Config\nlwebext.xml ..\..\..\..\bin\$(Configuration)_win_$(Platform)\Config
+copy ..\$(Configuration)_win_$(Platform)\Config\nlwebext_log.xml ..\..\..\..\bin\$(Configuration)_win_$(Platform)\Config
+copy ..\$(Configuration)_win_$(Platform)\HTTPComponent.dll ..\..\..\..\bin\$(Configuration)_win_$(Platform)
+copy ..\$(Configuration)_win_$(Platform)\HTTPComponent.dll.config ..\..\..\..\bin\$(Configuration)_win_$(Platform)
+copy ..\$(Configuration)_win_$(Platform)\HTTPComponent.pdb ..\..\..\..\bin\$(Configuration)_win_$(Platform)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

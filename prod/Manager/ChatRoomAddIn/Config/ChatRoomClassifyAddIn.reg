@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\Lync\Security\Trusted Sites]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\Lync\Security\Trusted Sites\PoolFQDN]
+"https"=dword:00000001
+"http"=dword:00000001

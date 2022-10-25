@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configure type="Common_HTTPComponent">
+    <Account>
+        <!--Database-->
+        <Database type="MSSQL" addr="MSSQL DB SERVER" port="1433" catalog="DBNAME" username="SQLUSER" password="PASSWORD"></Database>
+    </Account>
+    <!--Prompt Message-->
+    <PromptMessage>
+        <HTTPComponent>
+            <RuntimeInfo>
+                <TextSetEnforcer>Safeguard with Nextlabs Enforcer.</TextSetEnforcer>
+                <TextEnforceStatusYes>This room is safeguarded by Nextlabs Enforcer</TextEnforceStatusYes>
+                <TextEnforceStatusNo>This room is not safeguarded by Nextlabs Enforcer.</TextEnforceStatusNo>
+                <TextEnforcePersistentChatRoomPathHead>[CHAT ROOM ATTACHMENT SHARED FOLDE]</TextEnforcePersistentChatRoomPathHead>
+            </RuntimeInfo>
+        </HTTPComponent>
+    </PromptMessage>
+</Configure>

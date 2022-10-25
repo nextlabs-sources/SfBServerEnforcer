@@ -1,0 +1,4 @@
+NLRECIPIENTS:\CREATOR;
+NLMESSAGE:this is a notify message which will be send to \CREATOR;.
+NLRECIPIENTS:\INVITEE;
+NLMESSAGE:this is a notify message which will be send to \INVITEE;.

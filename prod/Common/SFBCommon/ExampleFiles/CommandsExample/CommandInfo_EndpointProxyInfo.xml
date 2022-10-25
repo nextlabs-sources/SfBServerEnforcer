@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MessageInfo type="endpointProxyInfo" id="GUID" status="1(emStatusOK)">
+    <UserSipUri>Sip:EndpointProxy.NLLync@lync.nextlabs.solutions</UserSipUri>
+    <UserSipUri>Sip:ClassifyAssistant.NLLync@lync.nextlabs.solutions</UserSipUri>
+</MessageInfo>

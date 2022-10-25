@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MessageInfo>
+    <Message type="ChatCategory">
+        <PoolFqdn></PoolFqdn>
+        <Identity></Identity>
+        <Name></Name>
+        <Description></Description>
+        <CategoryUri></CategoryUri>
+        <ParentCategoryUri></ParentCategoryUri>
+        <NumberOfChatRooms></NumberOfChatRooms>
+        <Invitations></Invitations>
+        <FileUpload></FileUpload>
+        <ChatHistory></ChatHistory>
+        <AllowedMembers>
+            <UserUri></UserUri>
+            <UserUri></UserUri>
+        </AllowedMembers>
+        <DeniedMembers>
+            <UserUri></UserUri>
+            <UserUri></UserUri>
+        </DeniedMembers>
+        <Creators>
+            <UserUri></UserUri>
+            <UserUri></UserUri>
+        </Creators>
+    </Message>
+</MessageInfo>

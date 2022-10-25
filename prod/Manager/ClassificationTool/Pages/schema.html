@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Schema</title>
+    <link rel="stylesheet" href="../Resources/common.css">
+    <link rel="stylesheet" href="../Resources/schema.css">
+    <link rel="stylesheet" href="../Resources/treeview.css">    
+</head>
+<body>
+    <div class="schema-dashboard">
+        <div class="schema-dashboard-head"></div>
+        <div class="schema-dashboard-body">
+            <!--schema list-->
+            <div class="schema-side-col">
+                <div class="schema-list">
+                    <div class="schema-list-head">
+                        <p>Schema(s)</p>
+                    </div>
+                    <div class="schema-list-body">
+
+                    </div>
+                    <div class="separator-primary"></div>
+                    <div class="schema-list-foot">
+                        <button id="schema-add-new-btn" class="btn btn-primary md">New Schema</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--schema panel-->
+            <div class="schema-panel-col">
+                <div class="schema-panel">
+                    <div class="schema-panel-head">
+                        <p>Classification Schema Detail</p>
+                        <span class="dustbin"></span>
+                    </div>
+                    <div class="schema-panel-body">
+                        <!--schema treeview-->
+                        <div id="treeview-content" class="schema-panel-content hidden" data-view="0">
+                            <!--schema title-->
+                            <div class="schema-content-row">
+                                <span id="schema-name-span" class="schema-name-top"></span>
+                                <div class="widget-container">
+                                    <div id="add-new-tag-btn" class="icon-wrapper" title="add a sub-node"><span class="icon plus"></span></div>
+                                    <div id="delete-all-tags-btn" class="icon-wrapper hidden" title="delete all sub-nodes"><span class="icon red-cross"></span></div>
+                                    <div id="modify-schema-btn" class="icon-wrapper" title="modify current schema"><span class="icon edit"></span></div>
+                                </div>
+                            </div>
+                            <!--schema description-->
+                            <div class="schema-content-row">
+                                <p id="schema-desc-para" class="schema-desc-para"></p>
+                            </div>
+                            <!--schema treeview container-->
+                            <div class="schema-content-row">
+                                <div id="treeview-container" class="schema-treeview-container"></div>
+                                <div class="btn-bar">
+                                    <button id="schema-treeview-preview-btn" class="btn btn-primary sm">Preview</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--schema create-->
+                        <div id="create-schema-content" class="schema-panel-content schema-create-container hidden" data-view="1">
+                            <div class="schema-create-row">
+                                <span class="top-label-for">Schema Name: </span>
+                                <div class="control-wrapper">
+                                    <input id="schema-name-input" type="text"/>
+                                </div>
+                                <p id="input-check-msg" class="input-check-msg">Only alphanumeric character and underscore("_") allowed and cannot be empty. The shema name max length is 255.</p>
+                            </div>
+                            <div class="schema-create-row">
+                                <span class="top-label-for">Description: </span>
+                                <div class="control-wrapper">
+                                    <textarea id="schema-desc-text" class="schema-desc-text"></textarea>
+                                </div>
+                            </div>
+                            <div class="scheam-create-footer">
+                                <!-- <div class="separator-primary"></div> -->
+                                <div class="btn-bar">
+                                    <button id="schema-ok-btn" class="btn btn-primary sm hidden">OK</button>
+                                    <button id="schema-cancel-btn" class="btn btn-default sm hidden">Cancel</button>
+                                    <button id="schema-apply-btn" class="btn btn-primary sm">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="schema-dashboard-foot">
+            <button id="schema-export-btn" class="btn btn-primary md schema-export-btn">Export</button>
+            <button id="schema-save-btn" class="btn btn-primary md schema-save-btn">Save</button>
+        </div>
+    </div>
+    <!--schema insert prompt view-->
+    <div id="insert-prompt" class="prompt-container">
+        <div class="schema-insert-prompt">
+            <div class="schema-insert-title"></div>
+            <div class="schema-insert-content">
+                <div id="head-row" class="row">
+                    <div class="col"><span class="table-head">Element</span></div>
+                    <div class="col"><span class="table-head">Default Value</span></div>
+                    <div class="col"><span class="table-head">Depend On</span></div>
+                </div>
+                <div id="add-row" class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <div class="icon-wrapper"><span class="icon-md plus"></span></div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+            <div class="schema-insert-footer">
+                <div class="btn-bar">
+                    <button id="insert-save-btn" class="btn sm btn-primary">OK</button>
+                    <button id="insert-cancel-btn" class="btn sm btn-default">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--schema modify prompt view-->
+    <div id="modify-prompt" class="prompt-container schema-modify-promp">
+        <div class="schema-modify-prompt">
+            <div class="schema-modify-title"></div>
+            <div class="schema-modify-content">
+                <div class="modify-content-row">
+                    <p class="top-label-for">Classification</p>
+                    <div class="control-wrapper">
+                        <select id="tag-selector"></select>
+                    </div>
+                </div>
+                <div class="modify-content-row">
+                    <p class="top-label-for">Default Value</p>
+                    <div class="control-wrapper">
+                        <select id="default-value-selector"></select>
+                    </div>                    
+                </div>
+                <div class="modify-content-row">
+                    <p class="top-label-for">Parent Tag</p>
+                    <div class="control-wrapper">
+                        <input id="parent-tag-input" type="text">
+                    </div>                    
+                </div>
+                <div class="modify-content-row">
+                    <p class="top-label-for">Depend On</p>
+                    <div class="control-wrapper">
+                        <select id="rely-on-selector" multiple="multiple"></select>
+                    </div>                    
+                </div>
+            </div>
+            <div class="schema-modify-footer">
+                <div class="btn-bar">
+                    <button id="modify-save-btn" class="btn sm btn-primary">OK</button>
+                    <button id="modify-cancel-btn" class="btn sm btn-default">Cancel</button>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div class="mask">
+    </div>
+    <!--Loading Animation-->
+    <div class="animation-container hidden">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <!-- schema hierarchical structure panel -->
+    <div id="schema-hierarchical-structure-panel" class="schema-hierarchical-structure-panel hidden">
+        <div id="schema-hierarchical-structure-container" class="schema-hierarchical-structure-container"></div>
+        <div id="schema-hierarchical-structure-footer" class="schema-hierarchical-structure-footer">
+            <button id="schema-treeview-preview-cancel-btn" class="btn btn-primary sm">Cancel</button>
+        </div>
+    </div>
+    <script src="../JScript/NLSchema.js"></script>    
+</body>
+</html>

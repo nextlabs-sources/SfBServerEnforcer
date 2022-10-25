@@ -1,0 +1,86 @@
+#!/bin/bash
+#
+# DESCRIPTION
+#	Invoke release build
+#
+# USAGE:
+#	Steps to invoke this script.
+#		export NLEXTERNALDIR=<path>
+#		export BUILD_NUMBER=<#>
+#		source setEnv
+#		./buildRelease
+#
+# HUDSON BUILD:
+#	cd $WORKSPACE
+#	export NLEXTERNALDIR=c:/hudson/jobs/external_latest/workspace
+#	source setEnv
+#	./buildRelease
+#
+# Build Options:
+#	make -f build/Makefile.compile || exit $?
+#	make -f build/Makefile.compile compile install || exit $?
+#
+# Publish Options:
+#	make -f build/Makefile.publish TYPE=release || exit $?
+#	make -f build/Makefile.publish TYPE=release sfbse archive || exit $
+
+
+LOG_FILE=buildRelease.log
+BUILD_MANIFEST_FILE=build.manifest
+
+(
+set -x
+# Extract Perforce Workspace and Hudson info (only if running on Hudson)
+if [ "X${JENKINS_HOME}" != "X" -a -f ${JENKINS_HOME}/jobs/${JOB_NAME}/config.xml ]; then
+	build/getGitWorkspaceInfo.pl ${JENKINS_HOME}/jobs/${JOB_NAME}/config.xml
+fi
+
+# Prepare environment
+./configure --type=release || exit $?
+source build.config
+
+# Set SFB Version to be built
+export SFBVERSION="SFB 2019"
+export SFBDNETVERSION="v4.7"
+export MSENFORCECOMMON=W:/
+
+#copy sdkwrapperlib.dll from MSEnforcerCommon
+cp -pfr ${MSENFORCECOMMON}/bin/${BUILDTYPE}_win_x64/SDKWrapperLib.dll ./SDKWrapperLib.dll
+cp -pfr "${NLEXTERNALGITDIR}/SFB SDK/${SFBVERSION}/Microsoft Lync Client/SDK/Microsoft.Lync.Utilities.dll"     ./Microsoft.Lync.Utilities.dll
+cp -pfr "${NLEXTERNALGITDIR}/SFB SDK/${SFBVERSION}/Microsoft Lync Client/SDK/Microsoft.Lync.Model.dll" ./Microsoft.Lync.Model.dll
+
+# Compile code
+make -f build/Makefile.compile TARGETENVARCH=x64 BUILDTYPE=release compile || exit $?
+
+#copy sdkwrapper.dll from MSEnforcerCommon
+cp -pfr ${MSENFORCECOMMON}/bin/${BUILDTYPE}_win_x64/SDKWrapper.dll ${NLBUILDROOT}/bin/${BUILDTYPE}_win_x64/SDKWrapper.dll
+
+# make install package
+make -f install/Makefile ${MAKE_INSTALLFLAGS} VERSION_BUILD_SHORT=${VERSION_BUILD_SHORT} || exit $?
+
+# Publish packages and artifacts to BODA only if PUBLISH_TO_BODA environment variable is set
+if [ "X${PUBLISH_TO_BODA}" = "XYes" -o "X${PUBLISH_TO_BODA}" = "Xyes" -o "X${PUBLISH_TO_BODA}" = "XYES" -o "X${PUBLISH_TO_BODA}" = "X1" ]
+then
+	# Publish intstallers and artifacts
+	make -f build/Makefile.publish TYPE=release || exit $?
+fi
+
+# Create and publish build manifest
+build/createBuildManifest.pl $LOG_FILE > $BUILD_MANIFEST_FILE || exit $?
+
+# Publish build manifest to BODA only if PUBLISH_TO_BODA environment variable is set
+if [ "X${PUBLISH_TO_BODA}" = "XYes" -o "X${PUBLISH_TO_BODA}" = "Xyes" -o "X${PUBLISH_TO_BODA}" = "XYES" -o "X${PUBLISH_TO_BODA}" = "X1" ]
+then
+	make -f build/Makefile.publish TYPE=release manifest || exit $?
+fi
+
+set +x
+
+echo
+echo
+echo "####################### BUILD MANIFEST CONTENTS ########################"
+cat ${WORKSPACE}/${BUILD_MANIFEST_FILE}
+echo "########################################################################"
+) 2>&1 | tee $LOG_FILE
+
+exit ${PIPESTATUS[0]}

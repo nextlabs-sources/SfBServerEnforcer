@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    //"outDir": "../../jsbin",
+    "allowJs": false,
+    "declaration": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "target": "es5",
+    "traceResolution": true,
+    "typeRoots": [
+      "../../../../jsbin/Modules/"
+    ]
+  },
+    "include": [
+        "./*.ts",
+        "./**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "./*.d.ts"
+    ]
+}

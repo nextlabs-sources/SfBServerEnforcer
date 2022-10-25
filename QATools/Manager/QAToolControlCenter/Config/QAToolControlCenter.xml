@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AutoTestInfo>
+    <PerformanceOrgLogFolder>PerformanceOrgLogFolder</PerformanceOrgLogFolder>
+    <PerformanceResultLogFolder>PerformanceResultLogFolder</PerformanceResultLogFolder>
+    <Users serverfqdn="LyncDev.lab11.com" userdomain="lab11.com">
+        <User username="kimTest1.lyncDev" password="123blue!" useruri="sip:kimTest1.lyncDev@lab11.com"></User>
+        <User username="kimTest2.lyncDev" password="123blue!" useruri="sip:kimTest2.lyncDev@lab11.com"></User>
+        <User username="kimTest3.lyncDev" password="123blue!" useruri="sip:kimTest3.lyncDev@lab11.com"></User>
+    </Users>
+    <ConferenceInfo action="join">
+        <ConferenceUri ConferenceLength="30" JoinInterval="3" JoinTimes="10" IMInterval="15">sip:kimtest1.lyncdev@lab11.com;gruu;opaque=app:conf:focus:id:11LM8WT1</ConferenceUri>
+        <Users>
+            <User useruri="sip:kimTest1.lyncDev@lab11.com"></User>
+            <User useruri="sip:kimTest2.lyncDev@lab11.com"></User>
+        </Users>
+    </ConferenceInfo>
+</AutoTestInfo>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configure type="Common_SFBControlPanel/Common_NLLyncEndpointProxy/Common_HTTPComponent/Common_SIPComponent">
+    <Account>
+        <!--Database-->
+        <Database type="MYSQL" addr="10.23.60.33" port="3306" catalog="sfb" username="kim" password="123blue!"></Database>
+    </Account>
+</Configure>

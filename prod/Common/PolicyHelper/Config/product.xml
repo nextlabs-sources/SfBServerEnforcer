@@ -1,0 +1,157 @@
+<ProductXml>
+    <Obligations>
+        <Obligation>
+            <DisplayName>SFB User Condition</DisplayName>
+            <RunAt>PEP</RunAt>
+            <Name>SFB_User_Condition</Name>
+            <Arguments>
+                <Argument usereditable="false" hidden="false">
+                    <Name>Subject</Name>
+                    <Value default="true">Participants</Value>
+                </Argument>
+                <Argument usereditable="true" hidden="false">
+                    <Name>Matches_Policy_With_Condition</Name>
+                    <Value>userDefinedName=UserDenfinedValue</Value>
+                </Argument>
+            </Arguments>
+        </Obligation>
+        <!-- SFBE: SFB_Notify-->
+        <Obligation>
+            <DisplayName>Notify Skype user</DisplayName>
+            <RunAt>PEP</RunAt>
+            <Name>SFB_Notify</Name>
+            <Arguments>
+                <Argument usereditable="true" hidden="false">
+                    <Name>Message</Name>
+                    <Value>a notify message string</Value>
+                </Argument>
+            </Arguments>
+        </Obligation>
+
+        <!-- SFBE: SFB_AutoSet_Enforcement-->
+        <Obligation>
+            <DisplayName>Enable Enforcement</DisplayName>
+            <RunAt>PEP</RunAt>
+            <Name>SFB_AutoSet_Enforcement</Name>
+        </Obligation>
+
+        <!-- SFBE: SFB_Auto_Classify-->
+        <Obligation>
+            <DisplayName>SFB Auto Classify</DisplayName>
+            <RunAt>PEP</RunAt>
+            <Name>SFB_Auto_Classify</Name>
+            <Arguments>
+                <Argument usereditable="true" hidden="false">
+                    <Name>Key</Name>
+                    <Value>Classify key</Value>
+                </Argument>
+                <Argument usereditable="true" hidden="false">
+                    <Name>Value</Name>
+                    <Value>Classify value</Value>
+                </Argument>
+            </Arguments>
+        </Obligation>
+
+        <!-- SFBE: SFB_Manul_Classify-->
+        <Obligation>
+            <DisplayName>SFB Manual Classify</DisplayName>
+            <RunAt>PEP</RunAt>
+            <Name>SFB_Manual_Classify</Name>
+            <Arguments>
+                <Argument usereditable="false" hidden="true">
+                    <Name>Data</Name>
+                    <Value>NLClassificationName=DefaultClassification</Value>
+                </Argument>
+                <Argument usereditable="false" hidden="false">
+                    <Name>Force_Classify</Name>
+                    <Value default="true">Yes</Value>
+                    <Value>No</Value>
+                </Argument>
+            </Arguments>
+        </Obligation>
+
+        <!-- SFBE: SFB_AutoSet_Classify_Manager -->
+        <Obligation>
+            <DisplayName>Enable Classify Manager</DisplayName>
+            <RunAt>PEP</RunAt>
+            <Name>SFB_AutoSet_Classify_Manager</Name>
+        </Obligation>
+    </Obligations>
+
+    <Actions>
+        <Action>
+            <Name>SFB_USER_CONDITION_QUERY</Name>
+            <DisplayName>SFB_USER_CONDITION_QUERY</DisplayName>
+            <ShortName>UC</ShortName>
+            <Category>SFB</Category>
+        </Action>
+        
+        <Action>
+            <Name>SFB_MEETING_SHARE</Name>
+            <DisplayName>SFB_MEETING_SHARE</DisplayName>
+            <ShortName>MS</ShortName>
+            <Category>SFB</Category>
+        </Action>
+        <Action>
+            <Name>SFB_MEETING_SHARE_JOIN</Name>
+            <DisplayName>SFB_MEETING_SHARE_JOIN</DisplayName>
+            <ShortName>MJ</ShortName>
+            <Category>SFB</Category>
+        </Action>
+        <Action>
+            <Name>SFB_MEETING_INVITE</Name>
+            <DisplayName>SFB_MEETING_INVITE</DisplayName>
+            <ShortName>LI</ShortName>
+            <Category>SFB</Category>
+        </Action>
+        <Action>
+            <Name>SFB_MEETING_JOIN</Name>
+            <DisplayName>SFB_MEETING_JOIN</DisplayName>
+            <ShortName>LJ</ShortName>
+            <Category>SFB</Category>
+        </Action>
+        <Action>
+            <Name>SFB_MEETING_CREATE</Name>
+            <DisplayName>SFB_MEETING_CREATE</DisplayName>
+            <ShortName>LC</ShortName>
+            <Category>SFB</Category>
+        </Action>
+        
+        <Action>
+            <Name>SFB_CHATROOM_UPLOAD</Name>
+            <DisplayName>SFB_CHATROOM_UPLOAD</DisplayName>
+            <ShortName>CU</ShortName>
+            <Category>SFB</Category>
+        </Action>
+        <Action>
+            <Name>SFB_CHATROOM_DOWNLOAD</Name>
+            <DisplayName>SFB_CHATROOM_DOWNLOAD</DisplayName>
+            <ShortName>CD</ShortName>
+            <Category>SFB</Category>
+        </Action>
+        <Action>
+            <Name>SFB_CHATROOM_JOIN</Name>
+            <DisplayName>SFB_CHATROOM_JOIN</DisplayName>
+            <ShortName>CJ</ShortName>
+            <Category>SFB</Category>
+        </Action>
+        <Action>
+            <Name>SFB_CHATROOMMANAGER_INVITE</Name>
+            <DisplayName>SFB_CHATROOMMANAGER_INVITE</DisplayName>
+            <ShortName>MI</ShortName>
+            <Category>SFB</Category>
+        </Action>
+        <Action>
+            <Name>SFB_CHATROOM_INVITE</Name>
+            <DisplayName>SFB_CHATROOM_INVITE</DisplayName>
+            <ShortName>CI</ShortName>
+            <Category>SFB</Category>
+        </Action>
+        <Action>
+            <Name>SFB_CHATROOM_CREATE</Name>
+            <DisplayName>SFB_CHATROOM_CREATE</DisplayName>
+            <ShortName>CC</ShortName>
+            <Category>SFB</Category>
+        </Action>
+    </Actions>
+</ProductXml>

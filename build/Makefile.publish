@@ -1,0 +1,128 @@
+# Make file to publish pcv and release builds
+#
+# Installers and build artifacts are published to \\nextlabs.com\share\data\build\pcv
+# or \\nextlabs.com\share\data\build\release. Typically, \\nextlabs.com\share\data is mapped
+# to s:/.
+#
+# The following variables must be defined in commandline:
+#	VERSION_BUILD_SHORT
+#	BUILD_DATE
+#
+# Example:
+#	make -f Makefile.publish VERSION_BUILD_SHORT=10001 BUILD_DATE=20110501 TYPE=pcv
+#	make -k -f Makefile.publish VERSION_BUILD_SHORT=10001 BUILD_DATE=20110501 TYPE=pcv installer_local
+#	make -f Makefile.publish VERSION_BUILD_SHORT=10001 BUILD_DATE=20110501 TYPE=release
+#	make -f Makefile.publish VERSION_BUILD_SHORT=10001 BUILD_DATE=20110501 TYPE=release spe2010_sync
+#	make -f Makefile.publish VERSION_BUILD_SHORT=10001 BUILD_DATE=20110501 TYPE=release archive_bin
+
+
+#
+# Check for errors
+#
+
+ifeq ($(NLBUILDROOT),)
+  $(error NLBUILDROOT undefined.)
+endif
+
+ifeq ($(VERSION_BUILD_SHORT),)
+  $(error VERSION_BUILD_SHORT undefined.)
+endif
+
+ifeq ($(BUILD_DATE),)
+  $(error BUILD_DATE undefined.)
+endif
+
+ifeq ($(TYPE),)
+  $(error TYPE undefined.)
+endif
+
+ifneq ($(TYPE), dev)
+ifneq ($(TYPE), pcv)
+ifneq ($(TYPE), release)
+  $(error Invalid TYPE $(TYPE).)
+endif
+endif
+endif
+
+ifeq ($(REPOSITORY_ROOT),)
+  $(error REPOSITORY_ROOT undefined.)
+endif
+
+ifeq ($(SYNC_FOLDER_ROOT),)
+  $(error SYNC_FOLDER_ROOT undefined.)
+endif
+
+
+#
+# Constants
+#
+
+include $(NLBUILDROOT)/build/Makefile.ver
+
+VERSION_STR_SFBSE=$(VERSION_MAJOR_SFBSE).$(VERSION_MINOR_SFBSE).$(VERSION_MAINTENANCE_SFBSE).$(VERSION_PATCH_SFBSE)
+
+PUBLISH_BODA_SFBSE_DIR=$(REPOSITORY_ROOT)/SfBServerEnforcer/$(TYPE)/$(VERSION_STR_SFBSE)/$(VERSION_BUILD_SHORT)
+PUBLISH_BODA_ARTIFACT_DIR=$(REPOSITORY_ROOT)/artifacts/SfBServerEnforcer/$(TYPE)/$(VERSION_STR_SFBSE)/$(VERSION_BUILD_SHORT)
+
+
+BUILD_MANIFEST_FILE_NAME=build.manifest
+
+TOP_BIN_DIR=$(NLBUILDROOT)/bin
+XLIB_DIR=$(NLBUILDROOT)/xlib
+INSTALL_BUILD_SFBSE_DIR=$(TOP_BIN_DIR)/installer
+
+#
+# Info
+#
+
+$(info --------------------------------------------------------------)
+$(info [Build])
+$(info TYPE                       = $(TYPE)) 
+$(info VERSION_BUILD_SHORT        = $(VERSION_BUILD_SHORT)) 
+$(info BUILD_DATE                 = $(BUILD_DATE)) 
+$(info [Path])
+$(info PUBLISH_BODA_SFBSE_DIR     = $(PUBLISH_BODA_SFBSE_DIR)) 
+$(info PUBLISH_BODA_ARTIFACT_DIR  = $(PUBLISH_BODA_ARTIFACT_DIR))
+$(info TOP_BIN_DIR                = $(TOP_BIN_DIR)) 
+$(info XLIB_DIR                   = $(XLIB_DIR)) 
+$(info INSTALL_BUILD_SFBSE_DIR    = $(INSTALL_BUILD_SFBSE_DIR)) 
+$(info [File])
+$(info ZIP_FILE_NAME_BIN          = $(ZIP_FILE_NAME_BIN)) 
+$(info --------------------------------------------------------------)
+$(info )
+
+
+#
+# Targets
+#
+
+.PHONY: all
+all: product
+
+.PHONY: product
+product: sfbse 
+
+.PHONY: sfbse
+sfbse:
+	@echo "INFO: Publishing SFBSE Installer(s) to BODA..."
+	@if [ ! -d $(INSTALL_BUILD_SFBSE_DIR) ]; then \
+		echo "ERROR: $(INSTALL_BUILD_SFBSE_DIR) does not exist - did the package zip get created at all?" ; \
+		exit 1 ; \
+	fi
+	@mkdir -p $(PUBLISH_BODA_SFBSE_DIR)
+	cp -f $(INSTALL_BUILD_SFBSE_DIR)/*.zip $(PUBLISH_BODA_SFBSE_DIR)/
+	ls -l $(PUBLISH_BODA_SFBSE_DIR)
+	@echo "[BUILD MANIFEST] Product Name         : $(VERSION_PRODUCT_SFBSE)"
+	@echo "[BUILD MANIFEST]   Installer Location : $(PUBLISH_BODA_SFBSE_DIR)"
+	@echo "[BUILD MANIFEST]   Installer Package  : $$(cd $(INSTALL_BUILD_SFBSE_DIR); ls -1 *.zip | tr '\n' ' ')"
+
+.PHONY: manifest
+manifest:
+	@echo "INFO: Publishing build-manifest to artifacts directory"
+	@if [ ! -f $(BUILD_MANIFEST_FILE_NAME) ]; then \
+		echo "ERROR: $(BUILD_MANIFEST_FILE_NAME) does not exist - did you execute createBuildManifest script?" ; \
+		exit 1 ; \
+	fi
+	@mkdir -p $(PUBLISH_BODA_ARTIFACT_DIR)
+	cp -f $(NLBUILDROOT)/$(BUILD_MANIFEST_FILE_NAME) $(PUBLISH_BODA_ARTIFACT_DIR)/
+	ls -l $(PUBLISH_BODA_ARTIFACT_DIR)

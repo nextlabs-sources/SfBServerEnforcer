@@ -1,0 +1,17 @@
+##
+# Product version information
+#
+# Description:
+#
+#	This file should be included in top-level Makefile 
+#
+# http://sharepoint/sites/support/release/Lists/Current%20Releases/AllItems.aspx
+##
+
+VERSION_PRODUCT_SFBSE		= Entitlement Manager for Microsoft Skype for Business Server
+
+VERSION_MAJOR_SFBSE			= 1
+VERSION_MINOR_SFBSE			= 3
+VERSION_MAINTENANCE_SFBSE	= 0
+VERSION_PATCH_SFBSE			= 0
+ 

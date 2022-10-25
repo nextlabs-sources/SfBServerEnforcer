@@ -1,0 +1,4 @@
+
+TARGETS = \
+	prod/Server/HTTPComponent \
+	prod/Server/SIPComponent

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MessageInfo>
+                <DesSipUri>Sip:KimTest1.yang@lync.nextlabs.solutions</DesSipUri>
+                <Message type="Notify">
+                    <ToastMessage></ToastMessage>
+                    <Header></Header>
+                    <Body>
+                        A test notify message. This message is send by Nextlabs enforcer enpoint proxy. The message will tell you why you are blocked by the enforcer.
+                    </Body>
+                </Message>
+</MessageInfo>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MessageInfo type="tag">
+	<Message>
+		<Tags>
+			<Tag name="Itar" value="yes">
+			</Tag>
+			<Tag name="Level" value="High">
+			</Tag>
+    	</Tags>
+	</Message>
+</MessageInfo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MessageInfo type="Notify" id="GUID" status="1(emStatusOK)">
+    <Notification>
+        <DesSipUri>Sip:KimTest1.yang@lync.nextlabs.solutions;Sip:John.tyler@lync.nextlabs.solutions</DesSipUri>
+        <ToastMessage></ToastMessage>
+        <Header></Header>
+        <Body>
+            A test notify message. This message is send by Nextlabs enforcer enpoint proxy. The message will tell you why you are blocked by the enforcer.
+        </Body>
+    </Notification>
+    <Notification>
+        <DesSipUri>Sip:Abraham.lincoln@lync.nextlabs.solutions</DesSipUri>
+        <ToastMessage></ToastMessage>
+        <Header></Header>
+        <Body>
+            A test notify message. This message is send by Nextlabs enforcer enpoint proxy. The message will tell you why you are blocked by the enforcer.
+        </Body>
+    </Notification>
+</MessageInfo>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Classification type = "manual">
+    <!-- Extend options: mandatory="true" multi-select="false" do not support now -->
+    <!-- editable: default value is false -->
+    <!-- default: default value is the first one -->
+    <Tag name="itar" editable="false" default="yes" values="yes|no">
+        <!-- relyOn: specify the rely on values which contains on his parent layer, can relyon multip values -->
+        <!-- relyOn: no default values, if do not set relyOn values, ignore this layer and all sub layers -->
+        <Tag name="level" editable="false" default="1" values="1|2|3|4|5" relyOn="yes">
+            <Tag name="classify" editable="false" default="yes" values="yes|no" relyOn="4|5"/>
+        </Tag>
+    </Tag>
+    <Tag name="description" editable="false" default="yes" values="protected meeting|normal meeting"></Tag>
+</Classification>

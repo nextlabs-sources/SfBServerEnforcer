@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MessageInfo type="ClassifyMeeting" id="GUID" status="1(emStatusOK)">
+    <UserSipUri></UserSipUri>       <!-- the user who will receive the classify info and do classify -->
+    <SFBObjUri></SFBObjUri>         <!-- the meeting or chat room uri which will be classified-->
+</MessageInfo>

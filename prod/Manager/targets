@@ -1,0 +1,8 @@
+
+TARGETS = \
+	prod/Manager/CoreManager \
+	prod/Manager/SFBControlPanel \
+	prod/Manager/ClassificationTool \
+	prod/Manager/MaintainTool \
+	prod/Manager/ChatRoomAddIn \
+	prod/Manager/NLAssistantWebService

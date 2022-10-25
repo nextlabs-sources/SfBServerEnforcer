@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "declaration": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "traceResolution": true
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.d.ts"
+  ],
+  "include": [
+    "./*.ts"
+  ]
+}

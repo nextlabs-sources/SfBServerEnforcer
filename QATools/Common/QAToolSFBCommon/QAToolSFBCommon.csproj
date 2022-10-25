@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E7367B6-51C9-4920-8D2D-FE3C9D033D2A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QAToolSFBCommon</RootNamespace>
+    <AssemblyName>QAToolSFBCommon</AssemblyName>
+    <TargetFrameworkVersion>$(SFBDNETVERSION)</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>debug_win_AnyCpu\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>release_win_AnyCpu\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>debug_win_x64\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>release_win_x64\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SFBServerEnforceCommonKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>debug_win_x86\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>release_win_x86\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>$(NLEXTERNALGITDIR)\log4net-1.2.13\4.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rtc.Collaboration">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(NLEXTERNALGITDIR)\SFB SDK\$(SFBVERSION)\Microsoft UCMA\SDK\Core\Bin\Microsoft.Rtc.Collaboration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rtc.Collaboration.PersistentChat, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(NLEXTERNALGITDIR)\SFB SDK\chatroom\Microsoft.Rtc.Collaboration.PersistentChat.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rtc.Management">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(NLEXTERNALGITDIR)\SFB SDK\$(SFBVERSION)\Microsoft.Rtc.Management\Microsoft.Rtc.Management.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rtc.Management.ADConnect, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(NLEXTERNALGITDIR)\SFB SDK\$(SFBVERSION)\Microsoft.Rtc.Management.ADConnect\Microsoft.Rtc.Management.ADConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>$(NLEXTERNALGITDIR)\SQLSDK\MySql.Data\v4.0_6.9.8.0__c5687fc88969c44d\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\NLConfigurationHelper.cs" />
+    <Compile Include="Common\NLJsonSerializerHelper.cs" />
+    <Compile Include="Common\NLXmlSerializerHelper.cs" />
+    <Compile Include="NLSocket\SockerListener.cs" />
+    <Compile Include="Performance\ClientMeetingPerformanceLogAnalyzer.cs" />
+    <Compile Include="WebServiceHelper\ClassifyMeetingWebServiceHelper.cs" />
+    <Compile Include="CommandHelper\CommandHelper.cs" />
+    <Compile Include="CommandHelper\EndpointProxyInfoCommandHelper.cs" />
+    <Compile Include="Common\ConfigureFileManager.cs" />
+    <Compile Include="Common\FileOpHelper.cs" />
+    <Compile Include="Common\CommonHelper.cs" />
+    <Compile Include="WebServiceHelper\WebServiceHelper.cs" />
+    <Compile Include="Common\LastErrorRecorder.cs" />
+    <Compile Include="Common\ThreadHelper.cs" />
+    <Compile Include="Database\AbstractDBOpHelper.cs" />
+    <Compile Include="Common\IPersistentStorage.cs" />
+    <Compile Include="Database\SFBDBMgr.cs" />
+    <Compile Include="Database\DBOpMSSQLHelper.cs" />
+    <Compile Include="Database\DBOpMYSQLHelper.cs" />
+    <Compile Include="Extend\StringArray.cs" />
+    <Compile Include="NLLog\CLog.cs" />
+    <Compile Include="NLLog\ErrorInfo.cs" />
+    <Compile Include="NLLog\Logger.cs" />
+    <Compile Include="NLLog\PerformanceMoniter.cs" />
+    <Compile Include="Common\PowerShellHelper.cs" />
+    <Compile Include="Common\XMLTools.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SFBServerEnforceCommonKey.snk" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir  ..\..\..\..\bin\$(Configuration)_win_$(Platform)
+copy ..\$(Configuration)_win_$(Platform)\log4net.dll ..\..\..\..\bin\$(Configuration)_win_$(Platform)
+copy ..\$(Configuration)_win_$(Platform)\log4net.xml ..\..\..\..\bin\$(Configuration)_win_$(Platform)
+copy ..\$(Configuration)_win_$(Platform)\MySql.Data.dll ..\..\..\..\bin\$(Configuration)_win_$(Platform)
+copy ..\$(Configuration)_win_$(Platform)\QAToolSFBCommon.dll ..\..\..\..\bin\$(Configuration)_win_$(Platform)
+copy ..\$(Configuration)_win_$(Platform)\QAToolSFBCommon.pdb ..\..\..\..\bin\$(Configuration)_win_$(Platform)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configure type="Common_NLLyncEndpointProxy">
+    <Account>
+        <NLLyncEndpointProxy>
+            <LyncClient type="agent"
+                serverfqdn="SFB POOL FQDN"
+                username="USERNAME"
+                userdomain="DOMAIN"
+                password="PASSWORD"
+                useruri="USER SIP LOGIN ADDR"/>
+        </NLLyncEndpointProxy>
+    </Account>
+
+    <!--TCP Communication-->
+    <TCPConmunication>
+        <NLLyncEndpointProxy>
+            <LyncClient type ="agent" port="8001"/>
+            <LyncClient type ="assistant" port="8002"/>
+        </NLLyncEndpointProxy>
+    </TCPConmunication>
+
+    <!--Prompt Message-->
+    <PromptMessage>
+        <NLLyncEndpointProxy>
+            <RuntimeInfo>
+                <AgentConversationSubject>Notify</AgentConversationSubject>
+                <AgentAutoReply>Hi \USERDISPLAYNAME;, I am compliance messenger. Thank you!</AgentAutoReply>
+                <PromptInfoForWrongServiceStartParam>Start service with wrong parameters. You can use [-EndpointType Agent] to start an agent service or use [-EndpointType Assistant] to start an assistant service</PromptInfoForWrongServiceStartParam>
+                <IMFrequentMessageInterval>100</IMFrequentMessageInterval>      <!-- unit is ms -->
+                <SFBClientServiceRestartTime>0</SFBClientServiceRestartTime>    <!-- unit is hour (0 ~ 23)  -->
+                <SendMessageRetryTimes>3</SendMessageRetryTimes>
+                <SendMessageRetryInterval>2</SendMessageRetryInterval>    <!-- unit is second -->
+            </RuntimeInfo>
+        </NLLyncEndpointProxy>
+    </PromptMessage>
+</Configure>

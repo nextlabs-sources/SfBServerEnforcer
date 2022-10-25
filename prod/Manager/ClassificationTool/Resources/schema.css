@@ -1,0 +1,450 @@
+﻿.schema-dashboard{
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+/* head style */
+.schema-dashboard-head{
+    width: 100%;
+    height: 0;
+}
+
+/* body style */
+.schema-dashboard-body{
+    width: 100%;
+    height: 60em;
+    margin-top: 2em;
+    border: 0 solid #999;
+    padding: 0;
+}
+
+/* schema side style */
+.schema-side-col{
+    width: 25em;
+    height: 60em;
+    margin: 1em .5em 1em 3em;
+    display: inline-block;
+}
+
+.schema-list{
+    width: 24em;
+    height: 58em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    overflow: hidden;
+    border-color: #999;
+    border-width: 0 .1em 0 .1em;
+    border-style: solid;
+    position: relative;
+}
+
+.schema-list-head{
+    width: 24em;
+    height: 4em;
+    line-height: 4em;
+    vertical-align: middle;
+    border-color: #999;
+    border-width: .1em 0 0 0;
+    border-style: solid;
+    text-align: center;
+}
+
+.schema-list-head p{
+    font-size: 16px;
+}
+
+.schema-list-body{
+    width: 24em;
+    height: 45em;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border-color: #999;
+    border-width: .1em 0 0 0;
+    border-style: solid;
+}
+
+.schema-list-item{
+    position: relative;
+    width: 24em;
+    height: 3em;
+    line-height: 3em;
+    vertical-align: middle;
+    background-color: #fff;
+    border-style: solid;
+    border-color: #eee;
+    border-width: 0 0 .1em 0;
+}
+
+.schema-list-item:hover{
+    background-color: #c4efff;
+    cursor: default;
+    color: #fff !important;
+}
+
+.schema-list-item-click{
+    background-color: #c4efff;
+    color: #fff !important;
+}
+
+.schema-list-item .schema-name{
+    font-size: 18px;
+    display: inline-block;
+    margin: auto 0 auto 1.5em;
+    max-width: 10em;
+    width: 10em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.schema-delete{
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    right: 3em;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.schema-list-item:hover .schema-delete{
+    visibility: visible;
+    opacity: 1;
+}
+
+.schema-list-foot{
+    width: 24em;
+    height: 6em;
+    border-color: #999;
+    border-width: 0 0 .1em 0;
+    border-style: solid;
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+}
+
+/* schema panel style */
+.schema-panel-col{
+    width: 68em;
+    height: 60em;
+    margin: 1em 1em 1em .5em;
+    display: inline-block;
+}
+
+.schema-panel{
+    width: calc(100% - .2em);
+    height: calc(100% - 2.2em);
+    margin-top: 1em;
+    margin-bottom: 1em;
+    overflow: hidden;
+    border-color: #999;
+    border-width: .1em;
+    border-style: solid;
+    position: relative;
+}
+
+.schema-panel-head{
+    width: 100%;
+    height: 3.9em;
+    line-height: 3.9em;
+    vertical-align: middle;
+    border-color: #999;
+    border-width: 0 0 .1em 0;
+    border-style: solid;
+    text-align: center;
+}
+
+.schema-panel-head p{
+    font-size: 16px;
+}
+
+.schema-panel-body{
+    width: 68em;
+    height: 51em;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-color: #999;
+    border-width: 0;
+    border-style: solid;
+    text-align: left;
+}
+
+.schema-detail-value{
+    font-size: 16px;   
+}
+
+.schema-panel-foot{
+    width: 100%;
+    height: 6em;
+    border-color: #999;
+    border-width: 0;
+    border-style: solid;
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+}
+.schema-panel-content{
+    margin: 2em auto auto auto;
+    position: relative;
+}
+.schema-content-row{
+    margin: 1em;
+}
+.modify-content-row{
+    position: relative;
+    margin: 2em auto;
+}
+.schema-treeview-container{
+    margin: 1.5em;
+}
+.schema-desc-text{
+    font-size: 16px;
+    width: 15em;
+    height: 10em;
+    border: 2px solid #efefef !important;
+    border-radius: 4px;    
+    padding: .5em;
+}
+.schema-name-top{
+    font-size: 20px;
+    font-weight: bold;
+    padding: .5em .5m .5em auto;
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto auto auto 1.5em;
+}
+.schema-desc-para{
+    font-size: 14px;
+    padding: .5em .5m .5em auto;
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto auto auto 1.5em;
+}
+
+/* foot style */
+.schema-dashboard-foot{
+    width: 94.5em;
+    height: 8em;
+    margin-left: 3em;
+    background-color: #efefef;
+    position: relative;
+}
+
+.schema-save-btn{
+    position: absolute;
+    right: 1em;
+    top: 1em;
+}
+.schema-export-btn{
+    position: absolute;
+    right: 15em;
+    top: 1em;
+}
+.widget-container{
+    display: inline-block;
+    position: relative;
+}
+.widget-wrapper{
+    display: inline-block;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* MISC */
+.cur-view{
+    display: block !important;
+}
+.label-for{
+    font-size: 16px;
+    width: 10em;
+    height: 1.5em;
+    line-height: 1.5em;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    margin: .5em;
+}
+.top-label-for{
+    font-size: 16px;
+    min-width: 16.35em;
+    min-height: 1.5em;
+    text-align: left;
+    display: inline-block;
+}
+.control-wrapper{
+    font-size: 16px;
+    margin: .5em 0;
+}
+
+/* tag insert style */
+.tag-value-selector,
+.tag-name-selector,
+.parent-name-input{
+    display: inline-block;
+    vertical-align: middle;
+}
+.parent-value-selector{
+    display: inline-block;
+    vertical-align: middle;
+}
+.insert-option{
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+/* prompt */
+.prompt-container{
+    width: 999999px;
+    height: 99999px;
+    background-color: rgba(0, 0, 0, .6);
+    position: fixed;
+    left: 0;
+    top: 0;
+    visibility: collapse;
+    opacity: 0;
+}
+.schema-insert-prompt{
+    position: absolute;
+    width: 95em;
+    height: 60em;
+    top: 3em;
+    left: 2.5em;
+    background-color: #fff;
+    border: 0;
+}
+.schema-insert-title{
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    min-height: 4em;
+    line-height: 4em;
+    border-color: #666;
+    border-width: 0 0 1px 0;
+    display: inline-block;
+    vertical-align: middle;
+    padding: .5em 1.5em;
+}
+.schema-insert-content{
+    width: 100%;
+    height: 44em;
+    border-color: #666;
+    border-width: 0 0 1px 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.schema-insert-footer{
+    width: 100%;
+    height: 8em;
+    text-align: center;
+}
+.schema-modify-prompt{
+    position: absolute;
+    width: 40em;
+    height: 60em;
+    top: 2em;
+    left: 30em;
+    background-color: #fff;
+    border: 0;
+}
+.schema-modify-title{
+    width: 100%;
+    height: 6em;
+    line-height: 6em;
+    border-color: #666;
+    border-width: 0 0 1px 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+.schema-modify-content{
+    width: 100%;
+    height: 44em;
+    border-color: #666;
+    border-width: 0 0 1px 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-align: center;
+}
+.schema-modify-footer{
+    width: 100%;
+    height: 10em;
+    text-align: center;
+}
+.schema-create-container{
+    width: 100%;
+    height: 48em;
+}
+.schema-create-row{
+    margin: 1em;
+    text-align: center;
+}
+.scheam-create-footer{
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.table-head{
+    font-size: 16px;
+    font-weight: bold;
+}
+.btn-bar{
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: calc((8em - 35px) / 2);
+}
+.show{
+    visibility: visible;
+    opacity: 1;
+}
+.collapse{
+    visibility: collapse;
+    opacity: 0;
+}
+.input-check-msg{
+    font-size: 16px;
+    width: 16.35em;
+    min-height: 1.5em;
+    text-align: left;
+    word-wrap: normal;
+    display: none;
+    color: #c66;
+    margin: .5em auto;
+}
+
+.schema-hierarchical-structure-panel{
+    /*position: fixed;
+    left: 30em;
+    top: 20em;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    display: inline-block;
+    background-color: #FFF;*/
+    left: -10em;
+    top: 0em;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.schema-hierarchical-structure-container{
+    /*width: 450px;*/
+    min-height: 10em;
+    max-height: 40em;
+    overflow-x: auto;
+    overflow-y: auto;
+    background-color: #FFF;
+    display: inline-block;
+    margin-top: 10em;
+}

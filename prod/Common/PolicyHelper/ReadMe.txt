@@ -1,0 +1,1 @@
+This is a common DLL provider query policy functions.

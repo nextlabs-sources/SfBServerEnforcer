@@ -1,0 +1,26 @@
+HKCR
+{
+	SDKWrapper.NLTagManager.1 = s 'NLTagManager Class'
+	{
+		CLSID = s '{431C7C65-66E7-47CC-828A-48696D81764C}'
+	}
+	SDKWrapper.NLTagManager = s 'NLTagManager Class'
+	{
+		CLSID = s '{431C7C65-66E7-47CC-828A-48696D81764C}'
+		CurVer = s 'SDKWrapper.NLTagManager.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {431C7C65-66E7-47CC-828A-48696D81764C} = s 'NLTagManager Class'
+		{
+			ProgID = s 'SDKWrapper.NLTagManager.1'
+			VersionIndependentProgID = s 'SDKWrapper.NLTagManager'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Free'
+			}
+			'TypeLib' = s '{4BA69F5E-E3A5-4D6B-B3DC-117B71E7696A}'
+		}
+	}
+}

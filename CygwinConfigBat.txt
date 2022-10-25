@@ -1,0 +1,43 @@
+@echo off
+subst /d o:
+subst /d r:
+subst /d v:
+subst /d x:
+subst /d t:
+
+subst o: "C:\Program Files\Microsoft SDKs\Windows/v7.0"
+subst r: "C:\Program Files\Microsoft SDKs\Windows/v6.0A"
+subst v: "C:\program files (x86)\Microsoft Visual Studio 11"
+subst x: "C:\Program Files (x86)\Microsoft Visual Studio 12.0"
+subst t: "C:\Program Files (x86)\MSBuild\12.0"
+
+export NLENFORCERSDIR="C:/Kim_Work/GitCode/SFBServerEnforcer"
+export NLEXTERNALGITDIR="C:/Kim_Work/Perforce/git_external"
+export NLEXTERNALDIR="C:/Kim_Work/Perforce/external"
+export NLBUILDROOT="C:/Kim_Work/GitCode/SFBServerEnforcer"
+export SFBVERSION="SFB 2019"
+export SFBDNETVERSION="v4.7"
+export VERSION_BUILD=0
+export JSOBJ="jsobj"
+export JSBIN="jsbin"
+unset TMP TEMP
+
+
+cd $NLBUILDROOT
+
+
+
+make TARGETENVARCH=x64 BUILDTYPE=release
+
+-----------------Using BuildRelease to build whole SPBE projects-----------------------------------------------
+
+export WORKSPACE="/cygdrive/c/Kim_Work/GitCode/SFBServerEnforcer"
+export NLEXTERNALGITDIR="C:/Kim_Work/Perforce/git_external"
+export NLEXTERNALDIR="C:/Kim_Work/Perforce/external"
+export NLEXTERNALDIR2="C:/Kim_Work/Perforce/external"
+export BUILD_NUMBER=999
+export PUBLISH_TO_BODA=0
+
+cd ${WORKSPACE}
+source ./setEnv
+./buildRelease

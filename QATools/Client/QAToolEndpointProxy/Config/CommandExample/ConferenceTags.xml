@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MessageInfo>
+	<Message type="SetMeetingTag">
+		<Tags>
+			<Tag name="Itar" value="1|2">
+				<Body>
+				Please set meeting tags
+				Itar:
+                   1. yes (default),
+                   2. no
+                Please choose you tags. You can return 1 or yes to choose the tag Itar=yes.
+				</Body>
+			</Tag>
+			<Tag name="Level" value="1|2|3">
+				<Body>
+				Please set meeting tags
+				Level
+                   1. Low (default), high level
+                   2. Middle
+                   3. High 
+                Please choose you tags. You can return 1 or High to choose the tag Level=High.
+				</Body>
+			</Tag>
+    	</Tags>
+	</Message>
+</MessageInfo>

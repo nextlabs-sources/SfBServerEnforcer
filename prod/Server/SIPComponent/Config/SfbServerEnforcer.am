@@ -1,0 +1,69 @@
+﻿<?xml version="1.0"?>
+<r:applicationManifest
+ r:appUri="http://www.nextlabs.com/SFBServerEnforcer"
+ xmlns:r="http://schemas.microsoft.com/lcs/2006/05">
+  <!-- V3.0 application -->
+  <r:allowRegistrationBeforeUserServices/>
+  <!-- Can run before UserServices if applicable -->
+  <r:serverFilter roles="ALL"/>
+  <!-- All server roles -->
+  <r:requestFilter methodNames="SERVICE,INVITE,INFO,BYE"/>
+  <r:responseFilter reasonCodes="ALL"/>
+  <r:splScript>
+    <![CDATA[
+
+/*++
+
+Copyright © Microsoft Corporation
+
+Module Name:
+
+	SFBServerEnforcer.am
+
+Abstract:
+
+	Implements the manifest used by the SIPSnoop Live Communications Server application.
+	This must be present in the same directory as the SIPSnoop executable.
+   
+
+--*/
+
+
+  if (sipRequest)
+  {
+
+	///Basic request info
+	//Log("Debug", 1, "We have a request on server ", FQDN, " ", Role);
+	//Log("Debug", 1, "Request Uri is ", sipRequest.RequestUri);
+	//Log("Debug", 1, "Method is ", sipRequest.Method);
+
+	
+	///Dispatch to managed handler
+
+	Dispatch("RequestHandler", "Request Extra Param1");
+
+	///we are done
+	return;
+  }
+
+  if (sipResponse)
+  {
+
+	///Basic response info
+	//Log("Debug", 1, "We have a response");
+	//Log("Debug", 1, "Response code is ", sipResponse.StatusCode);
+	//Log("Debug", 1, "Method is ", sipResponse.Transaction.Request.Method);
+
+
+	///Dispatch to managed handler
+	Dispatch("ResponseHandler", "Response Extra Param1");
+
+	///we are done
+	return;
+  }
+
+  
+]]>
+  </r:splScript>
+</r:applicationManifest>
+

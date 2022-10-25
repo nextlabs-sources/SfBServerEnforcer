@@ -1,0 +1,55 @@
+.tree-node{
+    position: relative;
+}
+.tree-content{
+    position: relative;
+    height: 40px;
+}
+.tree-content:hover{
+    background-color: #efefef;
+}
+.tree-expand{
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid #333;
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    top: 14px;
+}
+.tree-expand:hover{
+    cursor: pointer;
+}
+.tree-text{
+    position: absolute;
+    left: 20px;
+    top: 12px;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+.tree-text:hover{
+    cursor: pointer;
+}
+.tree-widget{
+    position: absolute;
+    right: 15px;
+    top: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+.tree-child-node{
+    margin-left: 20px;
+    position: relative;
+}
+.hidden-wrapper{
+    display: inline-block;
+}
+.hidden{
+    display: none;
+}

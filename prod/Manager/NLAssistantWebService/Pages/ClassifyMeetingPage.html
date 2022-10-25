@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Meeting Classification</title>
+    <link rel="stylesheet" href="../Resources/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../Resources/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../Resources/StyleBasedOnBootstrap.css" type="text/css"/>
+</head>
+<body style="overflow:scroll">
+    <!--My Meeting List View-->
+    <div class="container" style="width:1920px">
+        <!--Head Panel-->
+        <div class="row skype-blue" style="height:30px">
+            <div class="col-md-1"></div>
+            <div class="col-md-4" style="height:30px; line-height:30px; font-size: 16px; font-weight: bold;">
+                Skype for Business
+            </div>
+        </div>
+        <!--display prompt-->
+        <div class="row" style="height: 30px;z-index:10000;position:relative">
+            <div class="col-md-1"></div>
+            <div id="resultWrapper" class="col-md-10 bg-success" style="vertical-align:middle;height:30px;line-height:30px;font-weight:700;opacity:0"></div>
+            <div class="col-md-1"></div>
+        </div>
+        <!--Title-->
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <h2 style="font-size: 18px; font-weight: 700; color: #999;">Manage My Meetings</h2>
+            </div>
+        </div>
+        <!--space between rows-->
+        <div class="row" style="height:30px;opacity:0"></div>
+        <!--operation controls-->
+        <div class="row form-inline">
+            <div class="col-md-1"></div>
+            <div class="col-md-3" style="margin-top:5px">
+                <div class="form-group">
+                    <label for="dateFilterSelect">View Options</label>
+                    <select id="dateFilterSelect" class="form-control nxl-form-control">
+                        <option value="1H">1 hour</option>
+                        <option value="1D" selected="selected">1 day</option>
+                        <option value="1W">1 week</option>
+                        <option value="1M">1 month</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="showMeetingsSelect">Show</label>
+                    <select id="showMeetingsSelect" class="form-control nxl-form-control">
+                        <option value="all" selected="selected">All Meetings</option>
+                        <option value="done">Classified Meetings</option>
+                        <option value="undone">Unclassified Meetings</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" style="margin-top:5px; font-size: 0">
+                    <input id="meetingUriInput" type="text" class="form-control search-bar" style="width:400px" placeholder="Search With Meeting Uri or Entry Information" />
+                    <input id="searchBtn" type="button" class="btn btn-primary search-btn" value="Search" />
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10"><hr class="toolbar-sep-h" /></div>
+            <div class="col-md-1"></div>
+        </div> 
+        <div class="row">  
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <p class="result-counter">Total <span id="resultCounter"></span> records found</p>
+                <p class="search-result-counter hide"><span id="searchResultCounter"></span>Search results found for keyword <b id="searchKeywords"></b><a>Clear search results</a></p>        
+            </div>
+        </div>       
+        <!--space between rows-->
+        <div class="row" style="height: 30px; opacity: 0"></div>
+        <!--Meeting List Table-->
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <table class="table table-bordered table-hover table-responsive meeting-table">
+                    <thead>
+                        <tr>
+                            <th>Action</th>                            
+                            <th>Create Time</th>
+                            <th>Assigned Classification</th>
+                            <th>Meeting URI</th>                            
+                        </tr>
+                    </thead>
+                    <tbody id="listTableBody"></tbody>
+                </table>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <!--Mask-->
+    <div id="classificationMask"></div>
+
+    <!--Classification Meeting View-->
+    <div id="classificationWrapper">
+        <div class="policy-wrap-border">
+            <span></span>
+        </div>        
+        <div>
+            <div class="classify-space-col"></div>
+            <div class="classify-content-col">
+                <div class="classify-space-row"></div>
+                <div class="classify-info-row">
+                    <label class="classify-label" style="text-align:left">Create On</label>
+                    <span class="classify-span" id="createTimeLabel"></span>
+                </div>
+                <div class="classify-info-row">
+                    <label class="classify-label">Create By</label>
+                    <span class="classify-span" id="creatorLabel"></span>
+                </div>
+                <!--meeting uri label-->
+                <div class="classify-info-row">
+                    <label class="classify-label" style="text-align:left">Meeting URI</label>
+                </div>
+                <!--meeting uri input text-->
+                <div class="classify-info-row">
+                    <input id="meetingUriOutput" class="classify-info-row-input" type="text" value="" disabled />
+                </div>
+                <!--meeting entry info label-->
+                <div id="meetingEntryInfoLabel" class="classify-info-row">
+                    <label class="classify-label" style="text-align:left">Meeting Entry Info</label>
+                </div>
+                <!--meeting entry info input text-->
+                <div class="classify-info-row">
+                    <input class="classify-info-row-input" id="meetingEntryInfoOutput" type="text" value="" disabled />
+                </div>
+                <!--space between rows-->
+                <div class="classify-space-row"></div>
+                <!--linkage menu wrapper-->
+                <div class="classify-content-row table-bordered">
+                    <div id="autoTagWrapper" class="hide"></div>
+                    <div id="linkageMenuWrapper"></div>
+                </div>
+                <!--space between rows-->
+                <div class="classify-space-row"></div>
+                <!--save , cancel buttons-->
+                <div class="classify-info-row" style="text-align:center">
+                    <input id="cancelBtn" type="button" class="btn btn-default" style="width: 80px; background: #efefef; border: 1px solid #ddd;" value="Cancel" />
+                    <input id="saveBtn" type="button" class="btn btn-primary" style="width: 80px; background: #09d; border: 1px solid #ddd;" value="Save" />
+                </div>
+                <!--space between rows-->
+                <div class="classify-space-row"></div>
+            </div>
+            <div class="classify-space-col"></div>            
+        </div>
+    </div>
+
+    <!--Query Policy Prompt Box-->
+    <div id="policyWrapper" class="policy-wrapper">
+        <div class="policy-wrap-border">
+            <span>Warning</span>
+        </div>
+        <div>
+            <div class="policy-space-col"></div>
+            <div class="policy-content-col">
+                <!--Header-->
+                <div class="policy-head hide">
+                    Policy Result
+                </div>
+
+                <!--Content-->
+                <div class="policy-content">
+                    <p class="policy-content-head">The following participant(s) does not match the security policy, because of the changed meeting classification(s).</p>
+                    <h3 style="font-size: 13px; font-weight: bold; margin: 16px 0 0;">Participant(s)</h3>
+                    <div id="resultList" class="policy-result-list">
+                    </div>
+                    <div class="policy-classify-wrap">
+                        <div>
+                            <p class="policy-content-head" style="margin: 10px 0; font-weight: 700">New Classifications:</p>
+                            <ul id="newTagList">
+    
+                            </ul>
+                            <div id="newLinkageMenuContainer"></div>
+                        </div>
+                        <div>
+                            <p class="policy-content-head" style="font-weight: 700">Old Classifications:</p>
+                            <ul id="originalTagList">
+    
+                            </ul>
+                            <div id="oldLinkageMenuContainer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Controls-->
+                <div class="policy-controls">
+                    <div>
+                        <button type="button" id="policyCancelBtn" class="btn btn-default" style="width: 80px; background: #efefef; border: 1px solid #ddd;">Cancel</button>
+                        <button type="button" id="policyContinueBtn" class="btn btn-primary" style="width: 80px; background: #09d; border: 1px solid #ddd;">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Loading Animation-->
+    <div id="loadingBarWrapper" class="container-fluid" style="background-color:rgba(0,0,0,0.5);position:fixed;left:0px;top:0px;width:100%;height:10000px;display:none;z-index:9999">
+        <div class="row" style="height:360px"></div>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div id="loadingColumnWrapper" class="col-md-2" style="text-align:center">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../JScript/NLMeeting.js"></script>
+</body>
+</html>

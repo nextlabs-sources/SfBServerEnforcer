@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configure type="Common_SFBControlPanel/Common_NLLyncEndpointProxy/Common_HTTPComponent/Common_SIPComponent/Common_MaintainTool/NLAssistantWebService">
+    <Account>
+        <!--Database-->
+        <Database type="MSSQL" addr="MSSQL DB SERVER" port="1433" catalog="DBNAME" username="SQLUSER" password="PASSWORD"></Database>
+        
+        <NLLyncEndpointProxy>
+            <LyncClient type="agent"
+                serverfqdn="SFB POOL FQDN"
+                username="USERNAME"
+                userdomain="DOMAIN"
+                password="PASSWORD"
+                useruri="USER SIP LOGIN ADDR"/>
+            <LyncClient
+                type="assistant"
+                serverfqdn="SFB POOL FQDN"
+                username="USERNAME"
+                userdomain="DOMAIN"
+                password="PASSWORD"
+                useruri="USER SIP LOGIN ADDR"/>
+        </NLLyncEndpointProxy>
+    </Account>
+
+    <!--TCP Communication-->
+    <TCPConmunication>
+        <NLLyncEndpointProxy>
+            <LyncClient type ="agent" addr="IM AGENT SERVER" port="8001"/>
+            <LyncClient type ="assistant" addr="IM AGENT SERVER" port="8002"/>
+        </NLLyncEndpointProxy>
+    </TCPConmunication>
+
+    <!--Prompt Message-->
+    <PromptMessage>
+        <NLAssistantWebService>
+            <RuntimeInfo>
+                <NLAssistantClassifyTokenExpiryTime>600</NLAssistantClassifyTokenExpiryTime>
+            </RuntimeInfo>
+        </NLAssistantWebService>
+        <NLLyncEndpointProxy>
+            <ErrorMessage>
+                <AssitantUnknonwnError>System error, please contact system administrator for help.</AssitantUnknonwnError>
+                <AssitantNoClassifyPermissionError>You are not authorized to classify the meeting.</AssitantNoClassifyPermissionError>
+                <AssitantInvalidRequestError>Invalid request</AssitantInvalidRequestError>
+            </ErrorMessage>
+            <RuntimeInfo>
+                <ClassifyAssistantServiceAddr>http://[SERVER]:5858/NLAssistant/services/ClassifyAssistant.asmx</ClassifyAssistantServiceAddr>
+                <AgentConversationSubject>Notify</AgentConversationSubject>
+                <AssistantConversationSubject>Classify Meeting</AssistantConversationSubject>
+                <AgentAutoReply>Hi \USERDISPLAYNAME;, I am compliance messenger. Thank you!</AgentAutoReply>
+                <AssitantAutoReply>Hi \USERDISPLAYNAME;, I am meeting classification assistant. If you want to classify your meeting, please click this link, \CLASSIFYURL;. Thank you!</AssitantAutoReply>
+                <AssitantAutoSend>Hi \USERDISPLAYNAME;, please click this link, \CLASSIFYURL;, to classify the meeting you just created. Thank you!</AssitantAutoSend>
+                <PromptInfoForWrongServiceStartParam>Start service with wrong parameters. You can use [-EndpointType Agent] to start an agent service or use [-EndpointType Assistant] to start an assistant service</PromptInfoForWrongServiceStartParam>
+                <IMFrequentMessageInterval>100</IMFrequentMessageInterval> <!-- unit is ms -->
+                <SFBClientServiceRestartTime>0</SFBClientServiceRestartTime> <!-- unit is hour (0 ~ 23)  -->
+                <SendMessageRetryTimes>3</SendMessageRetryTimes>
+                <SendMessageRetryInterval>2</SendMessageRetryInterval>    <!-- unit is second -->
+            </RuntimeInfo>
+        </NLLyncEndpointProxy>
+        <HTTPComponent>
+            <RuntimeInfo>
+                <TextSetEnforcer>Safeguard with Nextlabs Enforcer.</TextSetEnforcer>
+                <TextEnforceStatusYes>This room is safeguarded by Nextlabs Enforcer</TextEnforceStatusYes>
+                <TextEnforceStatusNo>This room is not safeguarded by Nextlabs Enforcer.</TextEnforceStatusNo>
+                <TextEnforcePersistentChatRoomPathHead>[CHAT ROOM ATTACHMENT SHARED FOLDE]</TextEnforcePersistentChatRoomPathHead>
+            </RuntimeInfo>
+        </HTTPComponent>
+        <SIPComponent>
+            <RuntimeInfo>
+                <RecordPerformanceLog>false</RecordPerformanceLog>
+                <ThreadPoolMinThreadCount>100</ThreadPoolMinThreadCount>
+            </RuntimeInfo>
+            <ErrorMessage>
+                <DenyInvite  code="600"></DenyInvite>
+                <MeetingInviteMsgDenyBeforeManualClassifyDone>Please classify the meeting before you can invite others to join.</MeetingInviteMsgDenyBeforeManualClassifyDone>
+                <MeetingJoinMsgDenyBeforeManualClassifyDone>You are not authorized to join the meeting. Please contact meeting owner for help.</MeetingJoinMsgDenyBeforeManualClassifyDone>
+                <MeetingShareCreateMsgDenyBeforeManualClassifyDone>Please classify the meeting before you sharing.</MeetingShareCreateMsgDenyBeforeManualClassifyDone>
+                <MeetingShareJoinMsgDenyBeforeManualClassifyDone>You are not authorized to view the meeting sharing information. Please contact meeting owner for help.</MeetingShareJoinMsgDenyBeforeManualClassifyDone>
+            </ErrorMessage>
+        </SIPComponent>
+        <SFBControlPanel>
+            <ErrorMessage>
+                <DBConectionError>Connection to database failed</DBConectionError>
+                <ReadPersistentValueError>Failed to read chat room category's default value. Please try again. If the problem persists, please contact your system administrator.</ReadPersistentValueError>
+                <PersistentSaveError>Failed to save your chat room category's configuration. Please try again. If the problem persists, please contact your system administrator.</PersistentSaveError>
+                <NoPermission>You have no RTC Universal Server Admins permission. Please contact your system administrator.</NoPermission>
+                <UnknownError>Unknown error. Please try again. If the problem persists, please contact your system administrator.</UnknownError>
+                <ClassficationFormatError>Classification XML format error, please verify.</ClassficationFormatError>
+            </ErrorMessage>
+            <RuntimeInfo>
+                <FormTitle>NextLabs Entitlement Management for Skype for Business  Control Panel</FormTitle>
+                <StartLoading>Loading chat room categories information.</StartLoading>
+                <EndLoading>Chat room category information is loaded.</EndLoading>
+                <EnforcerExplain>When enabled, chat room created under this category will be safeguarded by NextLabs Enforcer.</EnforcerExplain>
+                <ForceEnforcerExplain>Chat room enforcement can not be modified by the room manager.</ForceEnforcerExplain>
+                <ClassficationAreaTitle>Classification Definition for This Category</ClassficationAreaTitle>
+                <SupportForceEnforcerOption>false</SupportForceEnforcerOption>
+                <SubmitSuccessed>Submit Successed</SubmitSuccessed>
+                <SubmitFailed>Submit Failed</SubmitFailed>
+                <ClassficationWarningInfo>Old classification schema name is \ORGCLASSIFICATIONSCHEMANAME;, but this is not exist or change in classification schema define table. You can ask for your system admin for help.</ClassficationWarningInfo>
+            </RuntimeInfo>
+        </SFBControlPanel>
+    </PromptMessage>
+</Configure>

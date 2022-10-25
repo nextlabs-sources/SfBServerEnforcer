@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configure type="Common_NLLyncEndpointProxy">
+    <Account>
+        <NLLyncEndpointProxy>
+            <LyncClient
+                type="assistant"
+                serverfqdn="SFB POOL FQDN"
+                username="USERNAME"
+                userdomain="DOMAIN"
+                password="PASSWORD"
+                useruri="USER SIP LOGIN ADDR"/>
+        </NLLyncEndpointProxy>
+    </Account>
+
+    <!--TCP Communication-->
+    <TCPConmunication>
+        <NLLyncEndpointProxy>
+            <LyncClient type ="agent" port="8001"/>
+            <LyncClient type ="assistant" port="8002"/>
+        </NLLyncEndpointProxy>
+    </TCPConmunication>
+
+    <!--Prompt Message-->
+    <PromptMessage>
+        <NLLyncEndpointProxy>
+            <ErrorMessage>
+                <AssitantUnknonwnError>System error, please contact system administrator for help.</AssitantUnknonwnError>
+                <AssitantNoClassifyPermissionError>You are not authorized to classify the meeting.</AssitantNoClassifyPermissionError>
+                <AssitantInvalidRequestError>Invalid request</AssitantInvalidRequestError>
+            </ErrorMessage>
+            <RuntimeInfo>
+                <ClassifyAssistantServiceAddr>http://localhost/NLAssistant/services/ClassifyAssistant.asmx</ClassifyAssistantServiceAddr>
+                <AssistantConversationSubject>Classify Meeting</AssistantConversationSubject>
+                <AssitantAutoReply>Hi \USERDISPLAYNAME;, I am meeting classification assistant. If you want to classify your meeting, please click this link, \CLASSIFYURL;. Thank you!</AssitantAutoReply>
+                <AssitantAutoSend>Hi \USERDISPLAYNAME;, please click this link, \CLASSIFYURL;, to classify the meeting you just created. Thank you!</AssitantAutoSend>
+                <PromptInfoForWrongServiceStartParam>Start service with wrong parameters. You can use [-EndpointType Agent] to start an agent service or use [-EndpointType Assistant] to start an assistant service</PromptInfoForWrongServiceStartParam>
+                <IMFrequentMessageInterval>100</IMFrequentMessageInterval>
+            </RuntimeInfo>
+        </NLLyncEndpointProxy>
+    </PromptMessage>
+</Configure>

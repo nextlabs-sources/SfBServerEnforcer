@@ -1,0 +1,10 @@
+
+TARGETS = \
+	prod/Common/SFBBaseCommon \
+	prod/Common/SFBCommon \
+	prod/Common/PolicyHelper \
+	prod/Common/TagHelper \
+	prod/Common/ChatRobot \
+	prod/Common/UCMAHelper
+
+# SDKWrapper in perforce/git_exteral, must be build before PolicyHelper

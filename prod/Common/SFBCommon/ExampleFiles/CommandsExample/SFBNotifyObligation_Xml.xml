@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MessageInfo type="Notify">
+    <Notification>
+        <DesSipUri>\CREATOR;;Sip:KimTest1.yang@lync.nextlabs.solutions</DesSipUri>
+        <Body>
+            A test notify message. \TYPE; creator is \CREATOR;, This message is send by Nextlabs enforcer enpoint proxy. The message will tell you why you are blocked by the enforcer.
+        </Body>
+    </Notification>
+    <Notification>
+        <DesSipUri>\CREATOR;;Sip:KimTest1.yang@lync.nextlabs.solutions</DesSipUri>
+        <Body>
+            A test notify message. \TYPE; creator is \CREATOR;, This message is send by Nextlabs enforcer enpoint proxy. The message will tell you why you are blocked by the enforcer.
+        </Body>
+    </Notification>
+</MessageInfo>

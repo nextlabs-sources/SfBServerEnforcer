@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MeetingCommand OperationType="Search" SipUri="sip:john.tyler@lync.nextlabs.solutions" Id="0bdbd9e4-e973-4299-8df7-231265940469">
+  <ResultCode>0</ResultCode>
+  <Filters Interval="1W" ShowMeetings="all" />
+  <Meetings>
+    <MeetingInfo Uri="sip:john.tyler@lync.nextlabs.solutions;gruu;opaque=app:conf:focus:id:3GLR3Q31" EntryInfo="" Creator="john.tyler@lync.nextlabs.solutions" CreateTime="2017-03-09 11:30:49">
+      <Classification>
+        <![CDATA[
+                <?xml version="1.0" encoding="utf-8"?><SFBClassification type = "manulClassifyObligation"><Layer name="itar" values="yes"/><Layer name="level" values="5"/><Layer name="classify" values="yes"/><Layer name="description" values="protected meeting"/></SFBClassification>]]>
+      </Classification>
+      <Tags>
+        <Tag TagName="Sensitivity" TagValue="Confidential" />
+        <Tag TagName="itar" TagValue="yes" />
+        <Tag TagName="level" TagValue="5" />
+        <Tag TagName="classify" TagValue="yes" />
+        <Tag TagName="description" TagValue="protected meeting" />
+      </Tags>
+    </MeetingInfo>
+  </Meetings>
+</MeetingCommand>

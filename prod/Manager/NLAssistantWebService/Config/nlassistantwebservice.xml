@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configure type="Common_NLAssistantWebService">
+    <Account>
+        <!--Database-->
+        <Database type="MSSQL" addr="MSSQL DB SERVER" port="1433" catalog="DBNAME" username="SQLUSER" password="PASSWORD"></Database>
+    </Account>
+
+    <!--Prompt Message-->
+    <PromptMessage>
+        <NLAssistantWebService>
+            <RuntimeInfo>
+                <NLAssistantClassifyTokenExpiryTime>600</NLAssistantClassifyTokenExpiryTime>
+            </RuntimeInfo>
+        </NLAssistantWebService>
+    </PromptMessage>
+</Configure>

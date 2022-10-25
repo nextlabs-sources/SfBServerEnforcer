@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PolicyResults>
+  <ResultCode>0</ResultCode>
+  <QueryIdentify>Guid</QueryIdentify>>
+  <JoinResult>
+    <Result Enforcement="Enforce_DontCare" Participant="satoshi.xiao@lync.nextlabs.solutions"></Result>
+    <Result Enforcement="Enforce_Allow" Participant="joe.xu@lync.nextlabs.solutions"></Result>
+    <Result Enforcement="Enforce_Deny" Participant="jimmy.carter@lync.nextlabs.solutions"></Result>
+    <Result Enforcement="Enforce_Unknow" Participant="john.tyler@lync.nextlabs.solutions"></Result>
+  </JoinResult>
+</PolicyResults>
